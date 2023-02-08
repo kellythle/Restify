@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Restify</title>
-
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     </head>
     <body>
@@ -71,10 +71,89 @@
               </nav>
         </header>
         <main>
-
+          <form>
+            <section class="section">
+              <div class="container">
+                <div class="columns is-centered" id="signupform">
+                  <div class="column is-two-fifths is-narrow-mobile">
+                    <div class="field is-horizontal">
+                      <div class="field-body">
+                        <div class="control">
+                          <input class="input is-rounded" type="text" placeholder="First Name" name="firstname">
+                        </div>
+                      </div>
+                      <div class="field-body">
+                        <div class="control">
+                          <input class="input is-rounded" type="text" placeholder="Last Name" name="lastname">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">
+                        Email
+                      </label>
+                      <div class="field-body">
+                        <div class="field is-expanded">
+                          <div class="control">
+                            <input class="input is-rounded" type="email" placeholder="Email address" name="email">
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">
+                        Phone Number
+                      </label>
+                      <div class="field-body">
+                        <div class="field is-expanded">
+                          <div class="control">
+                            <input class="input is-rounded" type="tel" placeholder="Phone number" name="phonenumber">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">
+                        Create a username
+                      </label>
+                      <div class="control">
+                        <input class="input is-rounded" type="text" placeholder="Username" name="newusername">
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">
+                        Create a password
+                      </label>
+                      <div class="control">
+                        <input class="input is-rounded" type="password" placeholder="Password" name="newpassword">
+                      </div>
+                      <p class="help">Password must be 8 characters or longer</p>
+                    </div>
+                    <div class="file is-normal is-info" id="avatarupload">
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Upload an avatar image
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="field">
+                      <div class="control">
+                        <input class="button is-primary is-medium" id="signupsubmit" type="submit" value="Submit input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </form>
         </main>
         <footer>
-
         </footer>
     </body>
 </html>
