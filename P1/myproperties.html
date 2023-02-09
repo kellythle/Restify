@@ -1,80 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-    <head>        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Restify</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Properties</title>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                  <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-                  </a>
-              
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                  </a>
-                </div>
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-                    <a class="navbar-item" >
-                      Home
-                    </a>
-              
-                    <a class="navbar-item">
-                      Documentation
-                    </a>
-              
-                    <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link">
-                        More
-                      </a>
-              
-                      <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                          About
-                        </a>
-                        <a class="navbar-item">
-                          Jobs
-                        </a>
-                        <a class="navbar-item">
-                          Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                          Report an issue
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="navbar-end">
-                    <div class="navbar-item">
-                      <div class="buttons">
-                        <a class="button is-primary">
-                          <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                          Log in
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-        </header>
-        <main>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img
+              src="https://bulma.io/images/bulma-logo.png"
+              width="112"
+              height="28"
+            />
+          </a>
 
-        </main>
-        <footer>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
 
-        </footer>
-    </body>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div
+            class="navbar-start"
+            style="flex-grow: 1; justify-content: center"
+          >
+            <a class="navbar-item"> Home </a>
+
+            <a class="navbar-item"> Documentation </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link"> More </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item"> About </a>
+                <a class="navbar-item"> Jobs </a>
+                <a class="navbar-item"> Contact </a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item"> Report an issue </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light"> Log in </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Main Starts Here -->
+    <main>
+      <div class="tile is-ancestor basetile">
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="newproperty.html" class="tilelink">
+              <figure class="image is-4by3">
+                <img src="add.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Add a New Property</b>
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location1, Canada</b> <br />
+                <b>$300</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location2, Canada</b> <br />
+                <b>$400</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location3, Canada</b> <br />
+                <b>$600</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile is-ancestor basetile">
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location4, Canada</b> <br />
+                <b>$1000</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location5, Canada</b> <br />
+                <b>$600</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location6, Canada</b> <br />
+                <b>$700</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child box itembox">
+            <a href="" class="tilelink">
+              <!--Blank Link-->
+              <figure class="image is-4by3">
+                <img src="house.png" alt="House image" />
+              </figure>
+              <p>
+                <b>Location8, Canada</b> <br />
+                <b>$200</b>/night
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>

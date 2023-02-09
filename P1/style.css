@@ -12,7 +12,26 @@
 #avatarupload {
     margin-bottom: 1rem;
 }
-
-#signupsubmit {
-    
+div.basetile {
+    padding: 2%;
+}
+div.itembox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+div.itembox:hover {
+    background-color: gainsboro;
+}
+div.imgblock {
+    width: 100%;
+    height: 80%;
+}
+div.captionblock {
+    width: 100%;
+    height: 20%;
+}
+a.tilelink {
+    text-decoration: none;
+    color: black;
 }
