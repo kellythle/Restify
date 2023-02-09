@@ -71,7 +71,144 @@
               </nav>
         </header>
         <main>
-
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <h1 class="title is-1">Edit your profile</h1>
+              </div>
+            </div>
+          </nav>
+          <div class="columns">
+            <div class="column is-half">
+              <form>
+                <section class="section">
+                  <div class="container">
+                    <div class="columns is-centered" id="signupform">
+                      <div class="column is-8 is-narrow-mobile">
+                        <h3 class="title is-3 is-centered">Edit account information.</h3>
+                        <div class="field is-horizontal">
+                          <div class="field-body">
+                            <div class="control">
+                              <input class="input is-rounded" type="text" placeholder="First Name" name="changefirstname">
+                            </div>
+                          </div>
+                          <div class="field-body">
+                            <div class="control">
+                              <input class="input is-rounded" type="text" placeholder="Last Name" name="changelastname">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Email
+                          </label>
+                          <div class="field-body">
+                            <div class="field is-expanded">
+                              <div class="control">
+                                <input class="input is-rounded" type="email" placeholder="Email address" name="changeemail">
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Phone Number
+                          </label>
+                          <div class="field-body">
+                            <div class="field is-expanded">
+                              <div class="control">
+                                <input class="input is-rounded" type="tel" placeholder="Phone number" name="changephonenumber">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Create a username
+                          </label>
+                          <div class="control">
+                            <input class="input is-rounded" type="text" placeholder="Username" name="changeusername">
+                          </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Create a password
+                          </label>
+                          <div class="control">
+                            <input class="input is-rounded" type="password" placeholder="Password" name="newpassword">
+                          </div>
+                          <p class="help">Password must be 8 characters or longer</p>
+                        </div>
+                        <div class="file is-normal is-info" id="avatarupload">
+                          <label class="file-label">
+                            <input class="file-input" type="file" name="resume">
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                              </span>
+                              <span class="file-label">
+                                Upload an avatar image
+                              </span>
+                            </span>
+                          </label>
+                        </div>
+                        <div class="field">
+                          <div class="control">
+                            <input class="button is-primary is-medium" id="signupsubmit" type="submit" value="Submit input">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </form>
+            </div>
+            <div class="column is-half">
+              <form>
+                <section class="section">
+                  
+                  <div class="container">
+                    
+                    <div class="columns is-centered" id="signupform">
+                      <div class="column is-8 is-narrow-mobile">
+                        <h3 class="title is-3 is-centered">Change your password.</h3>
+                        <div class="field">
+                          <label class="label">
+                            Enter your current password
+                          </label>
+                          <div class="control">
+                            <input class="input is-rounded" type="password" placeholder="Current password" name="changeoldpassword">
+                          </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Create a password
+                          </label>
+                          <div class="control">
+                            <input class="input is-rounded" type="password" placeholder="New password" name="changenewpassword">
+                          </div>
+                          <p class="help">Password must be 8 characters or longer</p>
+                        </div>
+                        <div class="field">
+                          <label class="label">
+                            Confirm your new password
+                          </label>
+                          <div class="control">
+                            <input class="input is-rounded" type="password" placeholder="Confirm password" name="changeconfirmnewpassword">
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="control">
+                            <input class="button is-primary is-medium" id="changepasswordsubmit" type="submit" value="Change password">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </form>
+            </div>
+          </div>
         </main>
         <footer>
 
