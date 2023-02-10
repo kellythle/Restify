@@ -11,8 +11,8 @@
         <header>
             <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                  <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                  <a class="navbar-item" href="index.html">
+                    Restify
                   </a>
               
                   <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -24,11 +24,11 @@
               
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-                    <a class="navbar-item" >
+                    <a class="navbar-item" href="index.html">
                       Home
                     </a>
               
-                    <a class="navbar-item">
+                    <a class="navbar-item" >
                       Documentation
                     </a>
               
@@ -58,20 +58,370 @@
                   <div class="navbar-end">
                     <div class="navbar-item">
                       <div class="buttons">
-                        <a class="button is-primary">
-                          <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                          Log in
-                        </a>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="button navbar-link">
+                            <div class="field">
+                              Notifications
+                            </div>
+                          </a>
+
+                          <div class="navbar-dropdown">
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              User wants to rent your property "..."
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              User wants to send you a message
+                            </a>
+                          </div>
+
+                        </div>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="button navbar-link">
+                            <strong>
+                              <div class="field">
+                                My Account
+                              </div>
+                            </strong>
+                          </a>
+                    
+                          <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                              Edit Profile
+                            </a>
+                            <a class="navbar-item">
+                              View Properties
+                            </a>
+                            <a class="navbar-item">
+                              ???
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              Sign Out
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </nav>
         </header>
-        <main>
 
+
+
+
+
+
+
+
+
+
+        <main>    
+          <section class="section">            
+            <form>              
+              <div class="container">          
+                <div class="columns is-centered">
+                  <div class="column is-two-fifths is-narrow-mobile">
+                    <h4 class="title is-4">Create your New Property</h4>
+
+                    <div class="field">
+                      <label class="label">Property Name</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Choose your property's name" required>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <label class="label">Address</label>
+                      <div class="control pb-2">
+                        <input class="input" type="text" placeholder="Address" required>
+                      </div>
+                      <div class="control pb-2">
+                        <input class="input" type="text" placeholder="Apartment, suite, etc. (optional)">
+                      </div>
+                      <div class="columns is-variable is-1 ">
+                        <div class="column is-one-third">
+                          <input class="input" type="text" placeholder="City" required>
+                        </div>
+                        <div class="column auto">
+                          <input class="input" type="text" placeholder="Province" required>
+                        </div>
+                        <div class="column auto">
+                          <input class="input" type="text" placeholder="Postal Code" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <label class="label">Group Size</label>
+                      <div class="control">
+                        <div class="select">
+                          <select>
+                            <option>Choose a number of guests</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <label class="label">Property Information</label>
+                      <div class="control">
+                        <div class="columns is-variable is-1 ">
+                          <div class="column is-one-half">
+                            <label class="label has-text-weight-semibold">Number of Beds</label>
+                            <div class="select">
+                              <select>
+                                <option>Choose a number of beds</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="column auto">
+                            <label class="label has-text-weight-semibold">Number of Baths</label>
+                            <div class="select">
+                              <select>
+                                <option>Choose a number of baths</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <label class="label">Amenities</label>
+                      <label class="label has-text-weight-semibold">Essentials</label>
+                      <div class="control">
+                        <div class="columns is-variable is-1">
+                          <div class="column is-one-half">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Wifi
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Washer
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Air conditioning
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Dedicated workspace
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Hair dryer
+                            </label>
+                          </div>
+                          <div class="column auto">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Kitchen
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Dryer
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Heating
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              TV
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Iron
+                            </label><br>
+                          </div>
+                        </div>    
+                      </div>
+
+                      <label class="label has-text-weight-semibold pt-3">Features</label>
+                      <div class="control">
+                        <div class="columns is-variable is-1">
+                          <div class="column is-one-half">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Pool
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Free parking on premises
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Crib
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              BBQ grill
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Indoor fireplace
+                            </label>
+                          </div>
+                          <div class="column auto">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Hot tub
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              EV charger
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Gym
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Breakfast
+                            </label><br>
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Smoking allowed
+                            </label><br>
+                          </div>
+                        </div>    
+                      </div>
+                      <label class="label has-text-weight-semibold pt-3">Safety</label>
+                      <div class="control">
+                        <div class="columns is-variable is-1">
+                          <div class="column is-one-half">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Smoke alarm
+                            </label>
+                          </div>
+                          <div class="column auto">
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              Carbon monoxide alarm
+                            </label>
+                          </div>
+                        </div>    
+                      </div>
+                    </div>
+                  
+                    <div class="field pt-4">
+                      <label class="label">Property Images</label>
+                      <div class="control">
+                        <div class="file">
+                          <label class="file-label">
+                            <input class="file-input" type="file" multiple="multiple" required>
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                              </span>
+                              <span class="file-label">
+                                Upload image(s)
+                              </span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <label class="label">Description</label>
+                      <div class="control">
+                        <textarea class="textarea" type="text" placeholder="Write out a description of your property for guests" required></textarea>
+                      </div>
+                    </div>
+
+                    <div class="field pt-4">
+                      <div class="control">
+                        <label class="checkbox">
+                          <input type="checkbox" required>
+                          I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-link">Submit</button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-link is-light">Cancel</button>
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </form>
+          </section>
         </main>
         <footer>
 
