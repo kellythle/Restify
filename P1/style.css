@@ -21,6 +21,10 @@ main {
     animation: fadeEffect 1s;
 }
 
+#signedoutsuccess {
+    margin-top: 10rem;
+}
+
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
