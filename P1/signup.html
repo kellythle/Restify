@@ -23,70 +23,59 @@
                 </div>
               
                 <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                  <div class="navbar-start">
                     <a class="navbar-item" >
                       Home
+                    </a>     
+                    <a class="navbar-item" href="index.html">
+                      View Listings
                     </a>
-              
-                    <a class="navbar-item">
-                      Documentation
-                    </a>
-              
-                    <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link">
-                        More
-                      </a>
-              
-                      <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                          About
-                        </a>
-                        <a class="navbar-item">
-                          Jobs
-                        </a>
-                        <a class="navbar-item">
-                          Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                          Report an issue
-                        </a>
-                      </div>
-                    </div>
                   </div>
               
                   <div class="navbar-end">
                     <div class="navbar-item">
                       <div class="buttons">
-                        <a class="button is-primary">
-                          <strong>Sign up</strong>
+                        <a class="button is-link">
+                          <strong>Create an account</strong>
                         </a>
                         <a class="button is-light">
                           Log in
                         </a>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </nav>
         </header>
         <main>
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <h1 class="title is-1">Create an account</h1>
+              </div>
+            </div>
+          </nav>
           <form>
             <section class="section">
               <div class="container">
-                <div class="columns is-centered" id="signupform">
+                <div class="columns is-centered">
                   <div class="column is-two-fifths is-narrow-mobile">
-                    <div class="field is-horizontal">
-                      <div class="field-body">
-                        <div class="control">
-                          <input class="input is-rounded" type="text" placeholder="First Name" name="firstname">
+                    <div class="field">
+                      <div class="columns">
+                        <div class="field-body">
+                          <div class="column is-one-half">
+                            <label class="label" for="changefirstname">First name</label>
+                            <input class="input is-rounded" type="text" placeholder="First Name" name="changefirstname">
+                          </div>
+                        </div>
+                        <div class="field-body">
+                          <div class="column auto">
+                            <label class="label" for="changelastname">Last name</label>
+                            <input class="input is-rounded" type="text" placeholder="Last Name" name="changelastname">
+                          </div>
                         </div>
                       </div>
-                      <div class="field-body">
-                        <div class="control">
-                          <input class="input is-rounded" type="text" placeholder="Last Name" name="lastname">
-                        </div>
-                      </div>
+                      
                     </div>
                     <div class="field">
                       <label class="label">
@@ -129,22 +118,33 @@
                       </div>
                       <p class="help">Password must be 8 characters or longer</p>
                     </div>
-                    <div class="file is-normal is-info" id="avatarupload">
+                    <div class="field">
+                      <label class="label" for="confirmnewpassword">
+                        Confirm your new password
+                      </label>
+                      <div class="control">
+                        <input class="input is-rounded" type="password" placeholder="Password" name="confirmnewpassword">
+                      </div>
+                    </div>
+                    <label class="label" for="newavatarimg">
+                      Add an avatar
+                    </label>
+                    <div class="file" id="avatarupload">
                       <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
+                        <input class="file-input" type="file" name="newavatarimg">
                         <span class="file-cta">
                           <span class="file-icon">
                             <i class="fas fa-upload"></i>
                           </span>
                           <span class="file-label">
-                            Upload an avatar image
+                            Upload an image
                           </span>
                         </span>
                       </label>
                     </div>
                     <div class="field">
                       <div class="control">
-                        <input class="button is-primary is-medium" id="signupsubmit" type="submit" value="Submit input">
+                        <input class="button is-link is-medium is-rounded" id="signupsubmit" type="submit" value="Sign up">
                       </div>
                     </div>
                   </div>
