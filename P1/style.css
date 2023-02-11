@@ -44,10 +44,24 @@ div.captionblock {
     height: 20%;
 }
 a.tilelink {
-text-decoration: none;
+    text-decoration: none;
     color: black;
 }
 
 #editprofilecolumnsmargin{
     margin-top: -3rem;
+}
+
+.select, .select select {
+    width: 100%;
+}
+
+.right {
+    float: right;
+}
+
+.booking-img {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
 }
