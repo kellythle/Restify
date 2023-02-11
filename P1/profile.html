@@ -24,15 +24,15 @@
               
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-                    <a class="navbar-item" >
-                      Home
+                    <a class="navbar-item" href="index.html">
+                      View Listings
                     </a>
               
                     <a class="navbar-item">
-                      Documentation
+                      My Reservations
                     </a>
               
-                    <div class="navbar-item has-dropdown is-hoverable">
+                    <!-- <div class="navbar-item has-dropdown is-hoverable">
                       <a class="navbar-link">
                         More
                       </a>
@@ -53,9 +53,9 @@
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
               
-                  <div class="navbar-end">
+                  <!-- <div class="navbar-end">
                     <div class="navbar-item">
                       <div class="buttons">
                         <a class="button is-primary">
@@ -66,9 +66,58 @@
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+                  <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons">
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="button navbar-link">
+                            <div class="field">
+                              Notifications
+                            </div>
+                          </a>
+
+                          <div class="navbar-dropdown">
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              User wants to rent your property "..."
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              User wants to send you a message
+                            </a>
+                          </div>
+
+                        </div>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="button navbar-link">
+                            <strong>
+                              <div class="field">
+                                My Account
+                              </div>
+                            </strong>
+                          </a>
+                    
+                          <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                              Edit Profile
+                            </a>
+                            <a class="navbar-item">
+                              Become a host
+                            </a>
+
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              Sign Out
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-              </nav>
+            </nav>
         </header>
         <main>
           <nav class="level">
@@ -78,7 +127,7 @@
               </div>
             </div>
           </nav>
-          <div class="columns">
+          <div class="columns" id="editprofilecolumnsmargin">
             <div class="column is-one"></div>
             <div class="column is-5">
               <form>
@@ -87,17 +136,22 @@
                     <div class="columns is-centered" id="signupform">
                       <div class="column is-8 is-narrow-mobile">
                         <h3 class="title is-3 is-centered">Edit account information.</h3>
-                        <div class="field is-horizontal">
-                          <div class="field-body">
-                            <div class="control">
-                              <input class="input is-rounded" type="text" placeholder="First Name" name="changefirstname">
+                        <div class="field">
+                          <div class="columns">
+                            <div class="field-body">
+                              <div class="column is-one-half">
+                                <label class="label" for="changefirstname">First name</label>
+                                <input class="input is-rounded" type="text" placeholder="First Name" value="Fake" name="changefirstname">
+                              </div>
+                            </div>
+                            <div class="field-body">
+                              <div class="column auto">
+                                <label class="label" for="changelastname">Last name</label>
+                                <input class="input is-rounded" type="text" placeholder="Last Name" value="Person" name="changelastname">
+                              </div>
                             </div>
                           </div>
-                          <div class="field-body">
-                            <div class="control">
-                              <input class="input is-rounded" type="text" placeholder="Last Name" name="changelastname">
-                            </div>
-                          </div>
+                          
                         </div>
                         <div class="field">
                           <label class="label">
@@ -106,7 +160,7 @@
                           <div class="field-body">
                             <div class="field is-expanded">
                               <div class="control">
-                                <input class="input is-rounded" type="email" placeholder="Email address" name="changeemail">
+                                <input class="input is-rounded" type="email" value="fakeemail@gmail.com" placeholder="Email address" name="changeemail">
                               </div>
                           </div>
                           </div>
@@ -118,7 +172,7 @@
                           <div class="field-body">
                             <div class="field is-expanded">
                               <div class="control">
-                                <input class="input is-rounded" type="tel" placeholder="Phone number" name="changephonenumber">
+                                <input class="input is-rounded" type="tel" value="(647) 123-4567"placeholder="Phone number" name="changephonenumber">
                               </div>
                             </div>
                           </div>
@@ -128,25 +182,29 @@
                             Username
                           </label>
                           <div class="control">
-                            <input class="input is-rounded" type="text" placeholder="Username" name="changeusername">
+                            <input class="input is-rounded" type="text" value="justatest" placeholder="Username" name="changeusername">
                           </div>
                         </div>
-                        <div class="file is-normal is-info" id="avatarupload">
+                        <label class="label" for="changeavatarimg">Change your avatar</label>
+                        <div class="file has-name" id="avatarupload">
                           <label class="file-label">
-                            <input class="file-input" type="file" name="resume">
+                            <input class="file-input" type="file" name="changeavatarimg">
                             <span class="file-cta">
                               <span class="file-icon">
                                 <i class="fas fa-upload"></i>
                               </span>
                               <span class="file-label">
-                                Upload an avatar image
+                                Upload image
                               </span>
+                            </span>
+                            <span class="file-name">
+                              Screen Shot 2023-01-30 at 15.54.25.png
                             </span>
                           </label>
                         </div>
                         <div class="field">
                           <div class="control">
-                            <input class="button is-primary is-medium" id="signupsubmit" type="submit" value="Submit input">
+                            <input class="button is-link is-medium is-rounded" id="signupsubmit" type="submit" value="Make changes">
                           </div>
                         </div>
                       </div>
@@ -191,7 +249,7 @@
                         </div>
                         <div class="field">
                           <div class="control">
-                            <input class="button is-primary is-medium" id="changepasswordsubmit" type="submit" value="Change password">
+                            <input class="button is-link is-medium is-rounded" id="changepasswordsubmit" type="submit" value="Change password">
                           </div>
                         </div>
                       </div>

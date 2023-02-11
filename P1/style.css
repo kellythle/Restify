@@ -2,12 +2,9 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    padding-top: 10rem;
 }
 
-#signupform {
-    padding-top: 2rem;
-}
+
 
 #avatarupload {
     margin-bottom: 1rem;
@@ -19,6 +16,10 @@ div.basetile {
 main {
     margin-top: 3rem;
     animation: fadeEffect 1s;
+}
+
+#signedoutsuccess {
+    margin-top: -2rem;
 }
 
 
@@ -45,4 +46,8 @@ div.captionblock {
 a.tilelink {
 text-decoration: none;
     color: black;
+}
+
+#editprofilecolumnsmargin{
+    margin-top: -3rem;
 }
