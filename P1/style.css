@@ -27,6 +27,7 @@ main {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+/* Peifeng defines the following (used in myproperties, myrequests, propertydetails)*/
 div.itembox{
     display: flex;
     flex-direction: column;
@@ -47,6 +48,29 @@ a.tilelink {
     text-decoration: none;
     color: black;
 }
+.collapsible {
+    background-color: #f1f1f1;
+    color: black;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+  
+.active, .collapsible:hover {
+    background-color: gainsboro;
+}
+  
+.content {
+    padding: 1rem;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+/* Peifeng's definition ends*/
 
 #editprofilecolumnsmargin{
     margin-top: -3rem;
