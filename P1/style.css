@@ -65,3 +65,24 @@ a.tilelink {
     position: sticky;
     top: 5rem;
 }
+
+.filter {
+    display: inline; 
+    white-space: nowrap;
+    float: right;
+}
+
+.sortby {
+    white-space: normal;
+    width: 100px;
+}
+
+.refunparent {
+    position: relative
+}
+
+.refun {
+    position: absolute; 
+    bottom: 1rem;
+    right: 1rem;
+}
