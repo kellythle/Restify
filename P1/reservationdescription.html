@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restify</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+  </head>
+  <body>
+    <header></header>
+    <!--Main starts here-->
+    <main>
+      <div class="columns">
+        <div
+          class="column is-full"
+          style="display: flex; flex-direction: column; justify-content: center"
+        >
+          <div>
+            <h1 class="title" style="padding: 0 0 0 2rem">
+              Fantastic Holiday House
+            </h1>
+            <span class="icon-text" style="padding: 0 0 1rem 2rem">
+                <span class="icon">
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="icon">
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="icon">
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="icon">
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="icon">
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span>4.5</span>
+              </span>
+          </div>
+
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed Request on Date 1</b>
+            </button>
+            <div class="ccontent">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" />
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>John Smith</strong> <small>@johnsmith</small>
+                    <small>31m</small>
+                    <br />
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Proin ornare magna eros, eu pellentesque tortor vestibulum
+                    ut. Maecenas non massa sem. Etiam finibus odio quis feugiat
+                    facilisis.
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-reply"></i
+                      ></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-retweet"></i
+                      ></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-heart"></i
+                      ></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+              <div class="media-right">
+                <button class="delete"></button>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed Request on Date 2</b>
+            </button>
+            <div class="ccontent"></div>
+          </div>
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed Request on Date 3</b>
+            </button>
+            <div class="ccontent"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <h1 style="text-align: center; font-size: large">
+        <b>Restify</b> by authors.
+      </h1>
+    </footer>
+
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
