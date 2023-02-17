@@ -1,0 +1,260 @@
+<!doctype html>
+<html class="has-navbar-fixed-top">
+    <head>        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Restify</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                  <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                </a>
+            
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                  <a class="navbar-item" href="index.html">
+                    View Listings
+                  </a>
+            
+                  <a class="navbar-item">
+                    My Reservations
+                  </a>
+
+                  <a class="navbar-item" href="myproperties.html">
+                    Manage properties
+                  </a>
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+
+                      <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="button navbar-link">
+                          <div class="field">
+                            Notifications
+                          </div>
+                        </a>
+
+                        <div class="navbar-dropdown">
+                          <hr class="navbar-divider">
+                          <a class="navbar-item">
+                            User wants to rent your property "..."
+                          </a>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item">
+                            User wants to send you a message
+                          </a>
+                        </div>
+
+                      </div>
+
+                      <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="button navbar-link">
+                          <strong>
+                            <div class="field">
+                              My Account
+                            </div>
+                          </strong>
+                        </a>
+                  
+                        <div class="navbar-dropdown">
+                          <a class="navbar-item">
+                            Edit Profile
+                          </a>
+                          <a class="navbar-item">
+                            View Properties
+                          </a>
+                          <a class="navbar-item">
+                            ???
+                          </a>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item">
+                            Sign Out
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </nav>
+        </header>
+        <main>
+            <section>
+                <div class="columns">
+                    <div class="column is-offset-1 is-5">
+                        <h2 class="title is-2">Upcoming reservations</h2>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <table class="table is-hoverable is-narrow" style="margin-left:auto;margin-right:auto;">
+                            <thead>
+                                <tr>
+                                <th>Property</th>
+                                <th>Address</th>
+                                <th>Check-in date</abbr></th>
+                                <th>Check-out date</th>
+                                <th>Guest details</th>
+                                <th>Guest requests</th>
+                                <th>Reservation details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="assets/picture/house.png" style="width:20vh;height:auto;">
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">123 Kings college circle</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">18/02/2023</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">24/02/2023</h5>
+                                    </td>
+                                    <td>
+                                        <a href="https://google.com"><h5 class="title is-5">Rohit</h5></a>
+                                        <p>PLEASE LINK CORRECTLY</p>
+                                    </td>
+                                    <td>
+                                        <h6 class="title is-6">I'd like to request a late checkout please</h6>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-primary" disabled>Reservation confirmed</button>
+                                    </td>
+                                </tr>
+                                <tr class="is-selected">
+                                    <td>
+                                        <img src="assets/picture/house.png" style="width:20vh;height:auto;">
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">444 Kings college circle</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">25/02/2023</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">29/02/2023</h5>
+                                    </td>
+                                    <td>
+                                        <a href="https://google.com"><h5 class="title is-5">Not Rohit</h5></a>
+                                        <p>PLEASE LINK CORRECTLY</p>
+                                    </td>
+                                    <td>
+                                        <h6 class="title is-6"></h6>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-warning" disabled>Requested cancellation</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- <div class="columns">
+                    <div class="column">
+                        <div class="modal is-active">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                              <header class="modal-card-head">
+                                <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                <img src="house.png">
+                                <h2>hello</h2>
+                              </section>
+                              <footer class="modal-card-foot">
+                                <button class="button is-success">Save changes</button>
+                                <button class="button">Cancel</button>
+                              </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+            <section style="margin-top: 10vh">
+                <div class="columns">
+                    <div class="column is-offset-1 is-5">
+                        <h2 class="title is-2">Past reservations</h2>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <table class="table is-hoverable is-narrow" style="margin-left:auto;margin-right:auto;">
+                            <thead>
+                                <tr>
+                                <th>Property</th>
+                                <th>Address</th>
+                                <th>Check-in date</abbr></th>
+                                <th>Check-out date</th>
+                                <th>Guest details</th>
+                                <th>Reservation details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="assets/picture/house.png" style="width:20vh;height:auto;">
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">123 Kings college circle</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">18/03/2022</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">24/03/2022</h5>
+                                    </td>
+                                    <td>
+                                        <block>
+                                        <a href="https://google.com"><h5 class="title is-5">Rohit</h5></a>
+                                        </block>
+                                        <block>
+                                        <button class="button is-link is-rounded is-small">Add/view user comments</button>
+                                        </block>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-primary" disabled>Reservation completed</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="assets/picture/house.png" style="width:20vh;height:auto;">
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">444 Kings college circle</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">25/02/2022</h5>
+                                    </td>
+                                    <td>
+                                        <h5 class="title is-5">29/02/2022</h5>
+                                    </td>
+                                    <td>
+                                        <a href="https://google.com"><h5 class="title is-5">Not Rohit</h5></a>
+                                        <block>
+                                            <button class="button is-link is-rounded is-small">Add/view user comments</button>
+                                        </block>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-danger" disabled>Reservation cancelled</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
