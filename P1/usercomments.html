@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rohit's comment history</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
+  </head>
+  <body>
+    <header>          
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+              <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+              <a class="navbar-item" href="index.html">
+                View Listings
+              </a>
+        
+              <a class="navbar-item" href="myrequests.html">
+                My Reservations
+              </a>
+
+              <a class="navbar-item" href="myproperties.html">
+                Manage Properties
+              </a>
+              
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+
+                  <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="button navbar-link is-arrowless">
+                      <span title="Badge top right" class="badge is-danger">2</span>
+                      <div class="field">
+                        <i class="fa fa-bell" style="font-size:20px"></i>
+                      </div>
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                      <a class="navbar-item" href="hostreservations.html">
+                        <p>Reservation request approved</p>
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item">
+                        <p>Your reservation at Loc was...</p>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="button navbar-link">
+                      <strong>
+                        <div class="field">
+                          My Account
+                        </div>
+                      </strong>
+                    </a>
+              
+                    <div class="navbar-dropdown is-right">
+                      <a class="navbar-item" href="profile.html">
+                        Edit Profile
+                      </a>
+                      <a class="navbar-item" href="hostreservations.html">
+                        View Reservation History
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item" href="signedout.html">
+                        Sign Out
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </nav>
+    </header>
+    <!--Main starts here-->
+    <main>
+      <div class="columns">
+        <div
+          class="column is-full"
+          style="display: flex; flex-direction: column; justify-content: center"
+        >
+            <div>
+                <h1 class="title" style="padding: 0 0 0 2rem">
+                See what other hosts are saying about Rohit
+                </h1>
+                <div class="block">
+                <span class="icon-text" style="padding: 0 0 1rem 2rem">
+                    <span class="icon">
+                    <i class="fas fa-star"></i>
+                    </span>
+                    <span class="icon">
+                    <i class="fas fa-star"></i>
+                    </span>
+                    <span class="icon">
+                    <i class="fas fa-star"></i>
+                    </span>
+                    <span class="icon">
+                    <i class="fas fa-star"></i>
+                    </span>
+                    <span class="icon">
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span>4.5 (3 comments)</span>
+                </span>
+                </div>
+                <div class="block" style="padding: 0 0 0 2rem">
+                    <a href="addusercomment.html" class="button is-rounded is-link" style="margin-bottom: 2rem">Rate this user</a>
+                </div>
+            </div>
+
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed stay on 24/03/2022</b>
+            </button>
+            <div class="ccontent">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" />
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>John Smith</strong> <small>@johnsmith</small>
+                    <small>31m</small>
+                    <br />
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Proin ornare magna eros, eu pellentesque tortor vestibulum
+                    ut. Maecenas non massa sem. Etiam finibus odio quis feugiat
+                    facilisis.
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-reply"></i
+                      ></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-retweet"></i
+                      ></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"
+                        ><i class="fas fa-heart"></i
+                      ></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+              <div class="media-right">
+                <button class="delete"></button>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed stay on Date 2</b>
+            </button>
+            <div class="ccontent"></div>
+          </div>
+          <div class="box">
+            <button type="button" class="collapsible">
+              <b>Completed stay on Date 3</b>
+            </button>
+            <div class="ccontent"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <h1 style="text-align: center; font-size: large">
+        <b>Restify</b> by Le, Prakash, and Zhang.
+      </h1>
+    </footer>
+
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
