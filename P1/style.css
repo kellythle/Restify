@@ -4,7 +4,10 @@
     align-content: center;
 }
 
-
+.navbar {
+    border-bottom: 1px solid #e2e1eb;
+    height: 4rem;
+}
 
 #avatarupload {
     margin-bottom: 1rem;
@@ -75,7 +78,7 @@ a.tilelink {
     background-color: #f1f1f1;
 }
 
-a.propertydetails {
+button.propertydetails {
     margin: 0.5rem;
     text-decoration: solid;
 }
