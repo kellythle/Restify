@@ -15,218 +15,222 @@
     <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
   </head>
   <body>
-    <header>          
-      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="searchresult.html">
-            <img src="assets/picture/Restify-Logo.png" width="112" height="50">
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-            <a class="navbar-item" href="searchresult.html">
-              View Listings
-            </a>
-      
-            <a class="navbar-item" href="myrequests.html">
-              My Reservations
-            </a>
-            
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
+    <div id="page-container">
+      <div id="content-wrap">
+        <header>          
+          <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="searchresult.html">
+                <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="searchresult.html">
+                  View Listings
+                </a>
+          
+                <a class="navbar-item" href="myrequests.html">
+                  My Reservations
+                </a>
+                
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
 
-                <div class="navbar-item has-dropdown is-hoverable ">
-                  <a class="button navbar-link is-arrowless">
-                    <span title="Badge top right" class="badge is-danger">2</span>
-                    <div class="field">
-                      <i class="fa fa-bell" style="font-size:20px"></i>
-                    </div>
-                  </a>
-                  <div class="navbar-dropdown is-right">
-                    <a class="navbar-item" href="myrequests.html">
-                      <p>Reservation request approved</p>
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                      <p>Your reservation at Loc was...</p>
-                    </a>
-                  </div>
-
-                </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="button navbar-link">
-                    <strong>
-                      <div class="field">
-                        My Account
+                    <div class="navbar-item has-dropdown is-hoverable ">
+                      <a class="button navbar-link is-arrowless">
+                        <span title="Badge top right" class="badge is-danger">2</span>
+                        <div class="field">
+                          <i class="fa fa-bell" style="font-size:20px"></i>
+                        </div>
+                      </a>
+                      <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="myrequests.html">
+                          <p>Reservation request approved</p>
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                          <p>Your reservation at Loc was...</p>
+                        </a>
                       </div>
-                    </strong>
-                  </a>
-            
-                  <div class="navbar-dropdown is-right">
-                    <a class="navbar-item" href="profile.html">
-                      Edit Profile
-                    </a>
-                    <a class="navbar-item" href="">
-                      Become a Host
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="signedout.html">
-                      Sign Out
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </nav>
-    </header>
-    <!--Main starts here-->
-    <main>
-      <div class="columns">
-        <div
-          class="column is-full"
-          style="display: flex; flex-direction: column; justify-content: center"
-        >
-          <h1 class="title" style="padding: 0 0 0 2rem">
-            Fantastic Holiday House
-          </h1>
-          <div class="tile is-ancestor basetile box">
-            <div class="tile is-parent">
-              <div class="tile is-child">
-                <figure class="image is-4by3">
-                  <img
-                    src="assets/picture/house.png"
-                    alt="House image"
-                    style="border-radius: 0.5rem; border: 1rem"
-                  />
-                </figure>
-              </div>
-            </div>
-            <div class="tile is-parent">
-              <div class="tile is-child">
-                <p style="padding: 1rem; font-size: larger">
-                  <b>Fantastic Holiday House</b> <br />
-                  <b>$300/night</b> <br />
-                  <b>Contact:</b>
-                </p>
-              </div>
-            </div>
-            <div class="tile is-parent">
-              <div
-                class="tile is-child box"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                "
-              >
-                <h1 style="text-align: center; font-size: large;">As a guest, you can:</h1>
-                <a class="button propertydetails is-link is-rounded" href="newrequest.html">New Request</a>
-                <a class="button propertydetails is-link is-rounded" href="reservationdescription.html">New Comment</a>
-                <a class="button propertydetails is-link is-rounded" href="reservationdescription.html">View History</a>
-                <h1 style="text-align: center; font-size: large;">Status: Not Requested</h1>
-              </div>
-            </div>
-          </div>
-          <div class="box">
-            <button type="button" class="collapsible">
-              <b>Information</b>
-            </button>
-            <div class="ccontent">
-              <ul>
-                <li>Area: University of Toronto, Toronto, Ontario, Canada</li>
-                <li>Max Number of Guests: 3</li>
-                <li>Beds: 3</li>
-                <li>Baths: 2</li>
-              </ul>
-            </div>
-          </div>
-          <div class="box">
-            <button type="button" class="collapsible">
-              <b>Description</b>
-            </button>
-            <div class="ccontent">
-              <p>Description about the residence...</p>
-            </div>
-          </div>
-          <div class="box">
-            <button type="button" class="collapsible">
-              <b>Amenities</b>
-            </button>
-            <div class="ccontent">
-              <div class="columns">
-                <div class="column">
-                  <div>
-                    Essentials:<br>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-wifi"></i>
-                      </span>
-                      <span>Wifi</span>
+
                     </div>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-tshirt"></i>
-                      </span>
-                      <span>Washer</span>
-                    </div>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-wind"></i>
-                      </span>
-                      <span>Air conditioner</span>
-                    </div>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-desktop"></i>
-                      </span>
-                      <span>Dedicated workspace</span>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                      <a class="button navbar-link">
+                        <strong>
+                          <div class="field">
+                            My Account
+                          </div>
+                        </strong>
+                      </a>
+                
+                      <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="profile.html">
+                          Edit Profile
+                        </a>
+                        <a class="navbar-item" href="">
+                          Become a Host
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="signedout.html">
+                          Sign Out
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="column">
-                  <div>
-                    Features:<br>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-swimming-pool"></i>
-                      </span>
-                      <span>Swimming pool</span>
-                    </div>
+            </div>
+        </nav>
+        </header>
+        <!--Main starts here-->
+        <main>
+          <div class="columns">
+            <div
+              class="column is-full"
+              style="display: flex; flex-direction: column; justify-content: center"
+            >
+              <h1 class="title" style="padding: 0 0 0 2rem">
+                Fantastic Holiday House
+              </h1>
+              <div class="tile is-ancestor basetile box">
+                <div class="tile is-parent">
+                  <div class="tile is-child">
+                    <figure class="image is-4by3">
+                      <img
+                        src="assets/picture/house.png"
+                        alt="House image"
+                        style="border-radius: 0.5rem; border: 1rem"
+                      />
+                    </figure>
                   </div>
                 </div>
-                <div class="column">
-                  <div>
-                    Safety:<br>
-                    <div class="icon-text">
-                      <span class="icon has-text-info">
-                        <i class="fas fa-fire"></i>
-                      </span>
-                      <span>Smoke detector</span>
-                    </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child">
+                    <p style="padding: 1rem; font-size: larger">
+                      <b>Fantastic Holiday House</b> <br />
+                      <b>$300/night</b> <br />
+                      <b>Contact:</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div
+                    class="tile is-child box"
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                    "
+                  >
+                    <h1 style="text-align: center; font-size: large;">As a guest, you can:</h1>
+                    <a class="button propertydetails is-link is-rounded" href="newrequest.html">New Request</a>
+                    <a class="button propertydetails is-link is-rounded" href="reservationdescription.html">New Comment</a>
+                    <a class="button propertydetails is-link is-rounded" href="reservationdescription.html">View History</a>
+                    <h1 style="text-align: center; font-size: large;">Status: Not Requested</h1>
                   </div>
                 </div>
               </div>
-              
+              <div class="box">
+                <button type="button" class="collapsible">
+                  <b>Information</b>
+                </button>
+                <div class="ccontent">
+                  <ul>
+                    <li>Area: University of Toronto, Toronto, Ontario, Canada</li>
+                    <li>Max Number of Guests: 3</li>
+                    <li>Beds: 3</li>
+                    <li>Baths: 2</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="box">
+                <button type="button" class="collapsible">
+                  <b>Description</b>
+                </button>
+                <div class="ccontent">
+                  <p>Description about the residence...</p>
+                </div>
+              </div>
+              <div class="box">
+                <button type="button" class="collapsible">
+                  <b>Amenities</b>
+                </button>
+                <div class="ccontent">
+                  <div class="columns">
+                    <div class="column">
+                      <div>
+                        Essentials:<br>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-wifi"></i>
+                          </span>
+                          <span>Wifi</span>
+                        </div>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-tshirt"></i>
+                          </span>
+                          <span>Washer</span>
+                        </div>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-wind"></i>
+                          </span>
+                          <span>Air conditioner</span>
+                        </div>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-desktop"></i>
+                          </span>
+                          <span>Dedicated workspace</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div>
+                        Features:<br>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-swimming-pool"></i>
+                          </span>
+                          <span>Swimming pool</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div>
+                        Safety:<br>
+                        <div class="icon-text">
+                          <span class="icon has-text-info">
+                            <i class="fas fa-fire"></i>
+                          </span>
+                          <span>Smoke detector</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
-    </main>
-    <footer class="footer">
-      <h1 style="text-align: center; font-size: large">
-        <b>Restify</b> by Le, Prakash, and Zhang.
-      </h1>
-    </footer>
+      <footer id="footer">
+        <h1 style="text-align: center; font-size: large">
+          <b>Restify</b> by Le, Prakash, and Zhang.
+        </h1>
+      </footer>
+    </div>
 
     <script>
       var coll = document.getElementsByClassName("collapsible");

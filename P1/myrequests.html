@@ -15,199 +15,203 @@
     <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
   </head>
     <body>
-        <header>          
-            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-              <div class="navbar-brand">
-                <a class="navbar-item" href="searchresult.html">
-                  <img src="assets/picture/Restify-Logo.png" width="112" height="50">
-                </a>
-            
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                </a>
-              </div>
-            
-              <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <div id="page-container">
+        <div id="content-wrap">
+          <header>          
+              <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
                   <a class="navbar-item" href="searchresult.html">
-                    View Listings
+                    <img src="assets/picture/Restify-Logo.png" width="112" height="50">
                   </a>
-            
-                  <a class="navbar-item" href="myrequests.html">
-                    My Reservations
+              
+                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                   </a>
+                </div>
+              
+                <div id="navbarBasicExample" class="navbar-menu">
+                  <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                    <a class="navbar-item" href="searchresult.html">
+                      View Listings
+                    </a>
+              
+                    <a class="navbar-item" href="myrequests.html">
+                      My Reservations
+                    </a>
 
-                  <a class="navbar-item" href="myproperties.html">
-                    Manage Properties
-                  </a>
-                  
-                <div class="navbar-end">
-                  <div class="navbar-item">
-                    <div class="buttons">
+                    <a class="navbar-item" href="myproperties.html">
+                      Manage Properties
+                    </a>
+                    
+                  <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons">
 
-                      <div class="navbar-item has-dropdown is-hoverable ">
-                        <a class="button navbar-link is-arrowless">
-                          <span title="Badge top right" class="badge is-danger">2</span>
-                          <div class="field">
-                            <i class="fa fa-bell" style="font-size:20px"></i>
+                        <div class="navbar-item has-dropdown is-hoverable ">
+                          <a class="button navbar-link is-arrowless">
+                            <span title="Badge top right" class="badge is-danger">2</span>
+                            <div class="field">
+                              <i class="fa fa-bell" style="font-size:20px"></i>
+                            </div>
+                          </a>
+                          <div class="navbar-dropdown is-right">
+                            <a class="navbar-item" href="myrequests.html">
+                              <p>Reservation request approved</p>
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                              <p>Your reservation at Loc was...</p>
+                            </a>
                           </div>
-                        </a>
-                        <div class="navbar-dropdown is-right">
-                          <a class="navbar-item" href="myrequests.html">
-                            <p>Reservation request approved</p>
-                          </a>
-                          <hr class="navbar-divider">
-                          <a class="navbar-item">
-                            <p>Your reservation at Loc was...</p>
-                          </a>
+
                         </div>
 
-                      </div>
-
-                      <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="button navbar-link">
-                          <strong>
-                            <div class="field">
-                              My Account
-                            </div>
-                          </strong>
-                        </a>
-                  
-                        <div class="navbar-dropdown is-right">
-                          <a class="navbar-item" href="profile.html">
-                            Edit Profile
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="button navbar-link">
+                            <strong>
+                              <div class="field">
+                                My Account
+                              </div>
+                            </strong>
                           </a>
-                          <a class="navbar-item" href="hostreservations.html">
-                            View Reservation History
-                          </a>
-                          <hr class="navbar-divider">
-                          <a class="navbar-item" href="signedout.html">
-                            Sign Out
-                          </a>
+                    
+                          <div class="navbar-dropdown is-right">
+                            <a class="navbar-item" href="profile.html">
+                              Edit Profile
+                            </a>
+                            <a class="navbar-item" href="hostreservations.html">
+                              View Reservation History
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="signedout.html">
+                              Sign Out
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-              </div>
-          </nav>
-        </header>
+                </div>
+            </nav>
+          </header>
     <!-- Main Starts Here -->
-    <main>
-      <div>
-        <h2 class="title is-2 pl-5">Manage Requests</h2>
-      </div>
-      <div class="tile is-ancestor basetile">
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="searchresult.html" class="tilelink">
-              <figure class="image is-4by3">
-                <img src="assets/picture/add.png" alt="Add image" />
-              </figure>
-              <p>
-                <b>Look for another residence?</b>
-              </p>
-            </a>
-          </div>
-        </div>
+          <main>
+            <div>
+              <h2 class="title is-2 pl-5">Manage Requests</h2>
+            </div>
+            <div class="tile is-ancestor basetile">
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="searchresult.html" class="tilelink">
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/add.png" alt="Add image" />
+                    </figure>
+                    <p>
+                      <b>Look for another residence?</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="propertydetailsrequester.html" class="tilelink">
-              <!--Blank Link-->
-              <figure class="image is-4by3">
-                <img src="assets/picture/house.png" alt="House image" />
-              </figure>
-              <p>
-                <b>Fantastic Holiday House</b> <br />
-                <b>$300</b>/night <br />
-                <b style="color: yellow">Pending</b>
-              </p>
-            </a>
-          </div>
-        </div>
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="propertydetailsrequester.html" class="tilelink">
+                    <!--Blank Link-->
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/house.png" alt="House image" />
+                    </figure>
+                    <p>
+                      <b>Fantastic Holiday House</b> <br />
+                      <b>$300</b>/night <br />
+                      <b style="color: yellow">Pending</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="" class="tilelink">
-              <!--Blank Link-->
-              <figure class="image is-4by3">
-                <img src="assets/picture/house.png" alt="House image" />
-              </figure>
-              <p>
-                <b>Location2</b> <br />
-                <b>$400</b>/night <br />
-                <b style="color: green">Approved</b>
-              </p>
-            </a>
-          </div>
-        </div>
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="" class="tilelink">
+                    <!--Blank Link-->
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/house.png" alt="House image" />
+                    </figure>
+                    <p>
+                      <b>Location2</b> <br />
+                      <b>$400</b>/night <br />
+                      <b style="color: green">Approved</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="" class="tilelink">
-              <!--Blank Link-->
-              <figure class="image is-4by3">
-                <img src="assets/picture/house.png" alt="House image" />
-              </figure>
-              <p>
-                <b>Location3</b> <br />
-                <b>$600</b>/night <br />
-                <b style="color: crimson">Denied</b>
-              </p>
-            </a>
-          </div>
-        </div>
-      </div>
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="" class="tilelink">
+                    <!--Blank Link-->
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/house.png" alt="House image" />
+                    </figure>
+                    <p>
+                      <b>Location3</b> <br />
+                      <b>$600</b>/night <br />
+                      <b style="color: crimson">Denied</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-      <div class="tile is-ancestor basetile">
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="" class="tilelink">
-              <!--Blank Link-->
-              <figure class="image is-4by3">
-                <img src="assets/picture/house.png" alt="House image" />
-              </figure>
-              <p>
-                <b>Location4</b> <br />
-                <b>$1000</b>/night <br />
-                <b style="color: crimson">Terminated</b>
-              </p>
-            </a>
-          </div>
-        </div>
+            <div class="tile is-ancestor basetile">
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="" class="tilelink">
+                    <!--Blank Link-->
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/house.png" alt="House image" />
+                    </figure>
+                    <p>
+                      <b>Location4</b> <br />
+                      <b>$1000</b>/night <br />
+                      <b style="color: crimson">Terminated</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child box itembox">
-            <a href="" class="tilelink">
-              <!--Blank Link-->
-              <figure class="image is-4by3">
-                <img src="assets/picture/house.png" alt="House image" />
-              </figure>
-              <p>
-                <b>Location5</b> <br />
-                <b>$600</b>/night <br />
-                <b style="color: aquamarine">Completed</b>
-              </p>
-            </a>
-          </div>
-        </div>
+              <div class="tile is-parent">
+                <div class="tile is-child box itembox">
+                  <a href="" class="tilelink">
+                    <!--Blank Link-->
+                    <figure class="image is-4by3">
+                      <img src="assets/picture/house.png" alt="House image" />
+                    </figure>
+                    <p>
+                      <b>Location5</b> <br />
+                      <b>$600</b>/night <br />
+                      <b style="color: aquamarine">Completed</b>
+                    </p>
+                  </a>
+                </div>
+              </div>
 
-        <div class="tile is-parent">
-          <!-- Place Holder -->
-        </div>
+              <div class="tile is-parent">
+                <!-- Place Holder -->
+              </div>
 
-        <div class="tile is-parent">
-          <!-- Place Holder -->
+              <div class="tile is-parent">
+                <!-- Place Holder -->
+              </div>
+            </div>
+          </main>
         </div>
-      </div>
-    </main>
     <!--Footer Starts Here-->
-    <footer class="footer">
-      <h1 style="text-align: center; font-size: large">
-        <b>Restify</b> by Le, Prakash, and Zhang.
-      </h1>
-    </footer>
+      <footer id="footer">
+        <h1 style="text-align: center; font-size: large">
+          <b>Restify</b> by Le, Prakash, and Zhang.
+        </h1>
+      </footer>
+    </div>
   </body>
 </html>
