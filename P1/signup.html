@@ -1,51 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-    <head>        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Restify</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                  <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
+  </head>
+  <body>
+    <header>          
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="index.html">
+              View Listings
+            </a>
+                
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-link" href="signup.html">
+                    <strong>Create an account</strong>
                   </a>
-              
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+                  <a class="button is-light" href="login.html">
+                    Log in
                   </a>
                 </div>
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <a class="navbar-item" >
-                      Home
-                    </a>     
-                    <a class="navbar-item" href="index.html">
-                      View Listings
-                    </a>
-                  </div>
-              
-                  <div class="navbar-end">
-                    <div class="navbar-item">
-                      <div class="buttons">
-                        <a class="button is-link">
-                          <strong>Create an account</strong>
-                        </a>
-                        <a class="button is-light">
-                          Log in
-                        </a>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </nav>
+              </div>
+            </div>
+          </div>
+          </nav>
         </header>
         <main>
           <nav class="level">
@@ -134,7 +137,7 @@
                         <input class="file-input" type="file" name="newavatarimg">
                         <span class="file-cta">
                           <span class="file-icon">
-                            <i class="fas fa-upload"></i>
+                            <i class="fa fa-upload" style="font-size:20px"></i>
                           </span>
                           <span class="file-label">
                             Upload an image
@@ -144,7 +147,7 @@
                     </div>
                     <div class="field">
                       <div class="control">
-                        <input class="button is-link is-medium is-rounded" id="signupsubmit" type="submit" value="Sign up">
+                        <input class="button is-link is-rounded" id="signupsubmit" type="submit" value="Sign up">
                       </div>
                     </div>
                   </div>
@@ -153,7 +156,10 @@
             </section>
         </form>
         </main>
-        <footer>
+        <footer class="footer">
+          <h1 style="text-align: center; font-size: large">
+            <b>Restify</b> by Le, Prakash, and Zhang.
+          </h1>
         </footer>
     </body>
 </html>

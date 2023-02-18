@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Restify</title>
+    <title>Your Property's Details</title>
 
     <link
       rel="stylesheet"
@@ -12,13 +12,14 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
   </head>
   <body>
-    <header>
-      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <header>          
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="index.html">
-              <img src="assets/picture/logo.png" width="112" height="28">
+              <img src="assets/picture/Restify-Logo.png" width="112" height="50">
             </a>
         
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -29,30 +30,66 @@
           </div>
         
           <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" >
-                Home
-              </a>     
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
               <a class="navbar-item" href="index.html">
                 View Listings
               </a>
-            </div>
         
+              <a class="navbar-item" href="myrequests.html">
+                My Reservations
+              </a>
+
+              <a class="navbar-item" href="myproperties.html">
+                Manage Properties
+              </a>
+              
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-link">
-                    <strong>Create an account</strong>
-                  </a>
-                  <a class="button is-light">
-                    Log in
-                  </a>
+
+                  <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="button navbar-link is-arrowless">
+                      <span title="Badge top right" class="badge is-danger">2</span>
+                      <div class="field">
+                        <i class="fa fa-bell" style="font-size:20px"></i>
+                      </div>
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                      <a class="navbar-item" href="hostreservations.html">
+                        <p>Reservation request approved</p>
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item">
+                        <p>Your reservation at Loc was...</p>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="button navbar-link">
+                      <strong>
+                        <div class="field">
+                          My Account
+                        </div>
+                      </strong>
+                    </a>
+              
+                    <div class="navbar-dropdown is-right">
+                      <a class="navbar-item" href="profile.html">
+                        Edit Profile
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item" href="signedout.html">
+                        Sign Out
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </a>
-            </div>
+              </div>
           </div>
-        </nav>
-  </header>
+      </nav>
+    </header>
     <!--Main starts here-->
     <main>
       <div class="columns">
@@ -94,8 +131,8 @@
                 "
               >
                 <h1 style="text-align: center; font-size: large;">As the owner of this property, you can:</h1>
-                <button class="button propertydetails is-link is-rounded">View Requests</button>
-                <button class="button propertydetails is-link is-rounded">View History</button>
+                <button class="button propertydetails is-link is-rounded">View Requests and History</a></button>
+                <button class="button propertydetails is-link is-rounded">Edit Property</button>
                 <button class="button propertydetails is-link is-rounded">Remove Property</button>
                 <h1 style="text-align: center; font-size: large;">Status: Open for Requests</h1>
               </div>
@@ -188,7 +225,7 @@
     </main>
     <footer class="footer">
       <h1 style="text-align: center; font-size: large">
-        <b>Restify</b> by authors.
+        <b>Restify</b> by Le, Prakash, and Zhang.
       </h1>
     </footer>
 

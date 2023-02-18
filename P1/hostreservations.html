@@ -3,16 +3,18 @@
     <head>        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Restify</title>
+        <title>Host Reservations</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">        
+        <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
     </head>
     <body>
-        <header>
+        <header>          
             <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
               <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
-                  <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                <a class="navbar-item" href="index.html">
+                  <img src="assets/picture/Restify-Logo.png" width="112" height="50">
                 </a>
             
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -28,32 +30,32 @@
                     View Listings
                   </a>
             
-                  <a class="navbar-item">
+                  <a class="navbar-item" href="myrequests.html">
                     My Reservations
                   </a>
 
                   <a class="navbar-item" href="myproperties.html">
-                    Manage properties
+                    Manage Properties
                   </a>
+                  
                 <div class="navbar-end">
                   <div class="navbar-item">
                     <div class="buttons">
 
-                      <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="button navbar-link">
+                      <div class="navbar-item has-dropdown is-hoverable ">
+                        <a class="button navbar-link is-arrowless">
+                          <span title="Badge top right" class="badge is-danger">2</span>
                           <div class="field">
-                            Notifications
+                            <i class="fa fa-bell" style="font-size:20px"></i>
                           </div>
                         </a>
-
-                        <div class="navbar-dropdown">
-                          <hr class="navbar-divider">
-                          <a class="navbar-item">
-                            User wants to rent your property "..."
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="hostreservations.html">
+                            <p>Reservation request approved</p>
                           </a>
                           <hr class="navbar-divider">
                           <a class="navbar-item">
-                            User wants to send you a message
+                            <p>Your reservation at Loc was...</p>
                           </a>
                         </div>
 
@@ -68,18 +70,12 @@
                           </strong>
                         </a>
                   
-                        <div class="navbar-dropdown">
-                          <a class="navbar-item">
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="profile.html">
                             Edit Profile
                           </a>
-                          <a class="navbar-item">
-                            View Properties
-                          </a>
-                          <a class="navbar-item">
-                            ???
-                          </a>
                           <hr class="navbar-divider">
-                          <a class="navbar-item">
+                          <a class="navbar-item" href="signedout.html">
                             Sign Out
                           </a>
                         </div>
@@ -93,7 +89,7 @@
             <section>
                 <div class="columns">
                     <div class="column is-offset-1 is-5">
-                        <h2 class="title is-2">Upcoming reservations</h2>
+                        <h2 class="title is-2">Upcoming Reservations</h2>
                     </div>
                 </div>
                 <div class="columns">
@@ -103,11 +99,11 @@
                                 <tr>
                                 <th>Property</th>
                                 <th>Address</th>
-                                <th>Check-in date</abbr></th>
-                                <th>Check-out date</th>
-                                <th>Guest details</th>
-                                <th>Guest requests</th>
-                                <th>Reservation details</th>
+                                <th>Check-in Date</abbr></th>
+                                <th>Check-out Date</th>
+                                <th>Guest Details</th>
+                                <th>Guest Requests</th>
+                                <th>Reservation Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,7 +112,7 @@
                                         <img src="assets/picture/house.png" style="width:20vh;height:auto;">
                                     </td>
                                     <td>
-                                        <h5 class="title is-5">123 Kings college circle</h5>
+                                        <h5 class="title is-5">123 King's College Circle</h5>
                                     </td>
                                     <td>
                                         <h5 class="title is-5">18/02/2023</h5>
@@ -126,21 +122,21 @@
                                     </td>
                                     <td>
                                         <a href="https://google.com"><h5 class="title is-5">Rohit</h5></a>
-                                        <p>PLEASE LINK CORRECTLY</p>
                                     </td>
                                     <td>
-                                        <h6 class="title is-6">I'd like to request a late checkout please</h6>
+                                        <h6 class="title is-6">I'd like to request a <br>
+                                          late checkout please</h6>
                                     </td>
                                     <td>
-                                        <button class="button is-rounded is-primary" disabled>Reservation confirmed</button>
+                                        <button class="button is-rounded is-primary" disabled>Reservation Confirmed</button>
                                     </td>
                                 </tr>
-                                <tr class="is-selected">
+                                <tr>
                                     <td>
                                         <img src="assets/picture/house.png" style="width:20vh;height:auto;">
                                     </td>
                                     <td>
-                                        <h5 class="title is-5">444 Kings college circle</h5>
+                                        <h5 class="title is-5">444 King's College Circle</h5>
                                     </td>
                                     <td>
                                         <h5 class="title is-5">25/02/2023</h5>
@@ -150,13 +146,12 @@
                                     </td>
                                     <td>
                                         <a href="https://google.com"><h5 class="title is-5">Not Rohit</h5></a>
-                                        <p>PLEASE LINK CORRECTLY</p>
                                     </td>
                                     <td>
                                         <h6 class="title is-6"></h6>
                                     </td>
                                     <td>
-                                        <button class="button is-rounded is-warning" disabled>Requested cancellation</button>
+                                        <button class="button is-rounded is-warning" disabled>Requested Cancellation</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -190,17 +185,18 @@
                         <h2 class="title is-2">Past reservations</h2>
                     </div>
                 </div>
-                <div class="columns">
+                <div class="columns pb-4">
                     <div class="column">
                         <table class="table is-hoverable is-narrow" style="margin-left:auto;margin-right:auto;">
                             <thead>
                                 <tr>
                                 <th>Property</th>
                                 <th>Address</th>
-                                <th>Check-in date</abbr></th>
-                                <th>Check-out date</th>
-                                <th>Guest details</th>
-                                <th>Reservation details</th>
+                                <th>Check-in Date</abbr></th>
+                                <th>Check-out Date</th>
+                                <th>Guest Details</th>
+                                <th>Guest Comments</th>
+                                <th>Reservation Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -209,7 +205,7 @@
                                         <img src="assets/picture/house.png" style="width:20vh;height:auto;">
                                     </td>
                                     <td>
-                                        <h5 class="title is-5">123 Kings college circle</h5>
+                                        <h5 class="title is-5">123 King's College Circle</h5>
                                     </td>
                                     <td>
                                         <h5 class="title is-5">18/03/2022</h5>
@@ -222,11 +218,15 @@
                                         <a href="https://google.com"><h5 class="title is-5">Rohit</h5></a>
                                         </block>
                                         <block>
-                                        <button class="button is-link is-rounded is-small">Add/view user comments</button>
+                                          <a href="">Add/View<br>comments</a>
                                         </block>
                                     </td>
                                     <td>
-                                        <button class="button is-rounded is-primary" disabled>Reservation completed</button>
+                                      <h6 class="title is-6">Lovely host and <br>
+                                        Would stay again!</h6>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-primary" disabled>Reservation Completed</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -234,7 +234,7 @@
                                         <img src="assets/picture/house.png" style="width:20vh;height:auto;">
                                     </td>
                                     <td>
-                                        <h5 class="title is-5">444 Kings college circle</h5>
+                                        <h5 class="title is-5">444 King's College Circle</h5>
                                     </td>
                                     <td>
                                         <h5 class="title is-5">25/02/2022</h5>
@@ -245,11 +245,13 @@
                                     <td>
                                         <a href="https://google.com"><h5 class="title is-5">Not Rohit</h5></a>
                                         <block>
-                                            <button class="button is-link is-rounded is-small">Add/view user comments</button>
+                                            <a href="">Add/View<br>comments</a>
                                         </block>
                                     </td>
                                     <td>
-                                        <button class="button is-rounded is-danger" disabled>Reservation cancelled</button>
+                                    </td>
+                                    <td>
+                                        <button class="button is-rounded is-danger" disabled>Reservation Cancelled</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -258,3 +260,10 @@
                 </div>
             </section>
         </main>
+        <footer class="footer">
+          <h1 style="text-align: center; font-size: large">
+            <b>Restify</b> by Le, Prakash, and Zhang.
+          </h1>
+        </footer>
+    </body>
+</html>

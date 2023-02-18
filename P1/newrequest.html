@@ -3,112 +3,83 @@
     <head>        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Restify</title>
+        <title>Request Booking</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">        
+        <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
     </head>
     <body>
-        <header>
+        <header>          
             <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                  <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+                </a>
+            
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
                   <a class="navbar-item" href="index.html">
-                    Restify
+                    View Listings
                   </a>
-              
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+            
+                  <a class="navbar-item" href="myrequests.html">
+                    My Reservations
                   </a>
-                </div>
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-                    <a class="navbar-item" href="index.html">
-                      Home
-                    </a>
-              
-                    <a class="navbar-item" >
-                      Documentation
-                    </a>
-              
-                    <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link">
-                        More
-                      </a>
-              
-                      <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                          About
-                        </a>
-                        <a class="navbar-item">
-                          Jobs
-                        </a>
-                        <a class="navbar-item">
-                          Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                          Report an issue
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="navbar-end">
-                    <div class="navbar-item">
-                      <div class="buttons">
+                  
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
 
-                        <div class="navbar-item has-dropdown is-hoverable">
-                          <a class="button navbar-link">
+                      <div class="navbar-item has-dropdown is-hoverable ">
+                        <a class="button navbar-link is-arrowless">
+                          <span title="Badge top right" class="badge is-danger">2</span>
+                          <div class="field">
+                            <i class="fa fa-bell" style="font-size:20px"></i>
+                          </div>
+                        </a>
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="hostreservations.html">
+                            <p>Reservation request approved</p>
+                          </a>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item">
+                            <p>Your reservation at Loc was...</p>
+                          </a>
+                        </div>
+
+                      </div>
+
+                      <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="button navbar-link">
+                          <strong>
                             <div class="field">
-                              Notifications
+                              My Account
                             </div>
+                          </strong>
+                        </a>
+                  
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="profile.html">
+                            Edit Profile
                           </a>
-
-                          <div class="navbar-dropdown">
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                              User wants to rent your property "..."
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                              User wants to send you a message
-                            </a>
-                          </div>
-
-                        </div>
-
-                        <div class="navbar-item has-dropdown is-hoverable">
-                          <a class="button navbar-link">
-                            <strong>
-                              <div class="field">
-                                My Account
-                              </div>
-                            </strong>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item" href="signedout.html">
+                            Sign Out
                           </a>
-                    
-                          <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                              Edit Profile
-                            </a>
-                            <a class="navbar-item">
-                              View Properties
-                            </a>
-                            <a class="navbar-item">
-                              ???
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                              Sign Out
-                            </a>
-                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </nav>
+              </div>
+          </nav>
         </header>
         <main>
           <section class="section">            
@@ -116,7 +87,7 @@
               <div class="container">          
                 <div class="columns is-centered">
                   <div class="column is-two-fifths is-narrow-mobile">
-                    <h4 class="title is-4">Request to Book</h4>
+                    <h2 class="title is-2">Request to Book</h2>
 
                     <div class="field">
                       <label class="label">Your Trip Details</label>
@@ -507,7 +478,7 @@
                       <div class="tile is-child box itembox">
                         <a href="" class="tilelink">
                           <figure class="image is-4by3">
-                            <img src="house.png" alt="House image" />
+                            <img src="assets/picture/house.png" alt="House image" />
                           </figure>
                           <p>
                             <b>Location1, Canada</b><br><br>
@@ -535,8 +506,10 @@
             </form>
           </section>
         </main>
-        <footer>
-
+        <footer class="footer">
+          <h1 style="text-align: center; font-size: large">
+            <b>Restify</b> by Le, Prakash, and Zhang.
+          </h1>
         </footer>
     </body>
 </html>

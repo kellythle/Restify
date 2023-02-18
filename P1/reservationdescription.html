@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Restify</title>
+    <title>Property's Comments</title>
 
     <link
       rel="stylesheet"
@@ -12,9 +12,80 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
   </head>
   <body>
-    <header></header>
+    <header>          
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="index.html">
+              View Listings
+            </a>
+      
+            <a class="navbar-item" href="myrequests.html">
+              My Reservations
+            </a>
+            
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+
+                <div class="navbar-item has-dropdown is-hoverable ">
+                  <a class="button navbar-link is-arrowless">
+                    <span title="Badge top right" class="badge is-danger">2</span>
+                    <div class="field">
+                      <i class="fa fa-bell" style="font-size:20px"></i>
+                    </div>
+                  </a>
+                  <div class="navbar-dropdown is-right">
+                    <a class="navbar-item" href="hostreservations.html">
+                      <p>Reservation request approved</p>
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                      <p>Your reservation at Loc was...</p>
+                    </a>
+                  </div>
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="button navbar-link">
+                    <strong>
+                      <div class="field">
+                        My Account
+                      </div>
+                    </strong>
+                  </a>
+            
+                  <div class="navbar-dropdown is-right">
+                    <a class="navbar-item" href="profile.html">
+                      Edit Profile
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="signedout.html">
+                      Sign Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </nav>
+    </header>
     <!--Main starts here-->
     <main>
       <div class="columns">
@@ -110,7 +181,7 @@
     </main>
     <footer class="footer">
       <h1 style="text-align: center; font-size: large">
-        <b>Restify</b> by authors.
+        <b>Restify</b> by Le, Prakash, and Zhang.
       </h1>
     </footer>
 

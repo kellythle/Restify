@@ -1,60 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="has-navbar-fixed-top">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Restify</title>
+    <head>        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Manage Requests</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">        
+        <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
+    </head>
+    <body>
+        <header>          
+            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                  <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+                </a>
+            
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                  <a class="navbar-item" href="index.html">
+                    View Listings
+                  </a>
+            
+                  <a class="navbar-item" href="myrequests.html">
+                    My Reservations
+                  </a>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!--Header Starts Here-->
-    <header>
-      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="index.html">
-              <img src="assets/picture/logo.png" width="112" height="28">
-            </a>
-        
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-        
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" >
-                Home
-              </a>     
-              <a class="navbar-item" href="index.html">
-                View Listings
-              </a>
-            </div>
-        
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-link">
-                    <strong>Create an account</strong>
+                  <a class="navbar-item" href="myproperties.html">
+                    Manage Properties
                   </a>
-                  <a class="button is-light">
-                    Log in
-                  </a>
-                </div>
-              </a>
-            </div>
-          </div>
-        </nav>
-  </header>
-    <!--Main Starts Here-->
+                  
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+
+                      <div class="navbar-item has-dropdown is-hoverable ">
+                        <a class="button navbar-link is-arrowless">
+                          <span title="Badge top right" class="badge is-danger">2</span>
+                          <div class="field">
+                            <i class="fa fa-bell" style="font-size:20px"></i>
+                          </div>
+                        </a>
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="hostreservations.html">
+                            <p>Reservation request approved</p>
+                          </a>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item">
+                            <p>Your reservation at Loc was...</p>
+                          </a>
+                        </div>
+
+                      </div>
+
+                      <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="button navbar-link">
+                          <strong>
+                            <div class="field">
+                              My Account
+                            </div>
+                          </strong>
+                        </a>
+                  
+                        <div class="navbar-dropdown is-right">
+                          <a class="navbar-item" href="profile.html">
+                            Edit Profile
+                          </a>
+                          <hr class="navbar-divider">
+                          <a class="navbar-item" href="signedout.html">
+                            Sign Out
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </nav>
+        </header>
+    <!-- Main Starts Here -->
     <main>
+      <div>
+        <h2 class="title is-2 pl-5">Manage Requests</h2>
+      </div>
       <div class="tile is-ancestor basetile">
         <div class="tile is-parent">
           <div class="tile is-child box itembox">
@@ -163,7 +198,7 @@
     <!--Footer Starts Here-->
     <footer class="footer">
       <h1 style="text-align: center; font-size: large">
-        <b>Restify</b> by authors.
+        <b>Restify</b> by Le, Prakash, and Zhang.
       </h1>
     </footer>
   </body>

@@ -1,55 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-    <head>        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Restify</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                  <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search Properties</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/picture/Restify-Favicon.png">
+  </head>
+  <body>
+    <header>          
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="assets/picture/Restify-Logo.png" width="112" height="50">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="index.html">
+              View Listings
+            </a>
+      
+            <a class="navbar-item" href="myrequests.html">
+              My Reservations
+            </a>
+            
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+
+                <div class="navbar-item has-dropdown is-hoverable ">
+                  <a class="button navbar-link is-arrowless">
+                    <span title="Badge top right" class="badge is-danger">2</span>
+                    <div class="field">
+                      <i class="fa fa-bell" style="font-size:20px"></i>
+                    </div>
                   </a>
-              
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                  </a>
-                </div>
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <a class="navbar-item" >
-                      Home
-                    </a>     
-                    <a class="navbar-item" href="index.html">
-                      View Listings
+                  <div class="navbar-dropdown is-right">
+                    <a class="navbar-item" href="hostreservations.html">
+                      <p>Reservation request approved</p>
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                      <p>Your reservation at Loc was...</p>
                     </a>
                   </div>
-              
-                  <div class="navbar-end">
-                    <div class="navbar-item">
-                      <div class="buttons">
-                        <a class="button is-link">
-                          <strong>Create an account</strong>
-                        </a>
-                        <a class="button is-light">
-                          Log in
-                        </a>
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="button navbar-link">
+                    <strong>
+                      <div class="field">
+                        My Account
                       </div>
+                    </strong>
+                  </a>
+            
+                  <div class="navbar-dropdown is-right">
+                    <a class="navbar-item" href="profile.html">
+                      Edit Profile
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="signedout.html">
+                      Sign Out
                     </a>
                   </div>
                 </div>
-              </nav>
-        </header>
+              </div>
+            </div>
+        </div>
+    </nav>
+    </header>
         <main>
-
-
         <section>
           <div class="columns ml-5">
             <div class="column is-one-fifth">
@@ -328,11 +365,11 @@
                       <a href="searchresult.html" class="dropdown-item" selected>
                         Recommended
                       </a>
-                      <a href="#" class="dropdown-item">
-                        Price: high to low
+                      <a href="searchlowtohigh.html" class="dropdown-item">
+                        Price: low to high
                       </a>
                       <a href="#" class="dropdown-item">
-                        Price: low to high
+                        Price: high to low
                       </a>
                       <a href="#" class="dropdown-item">
                         Guest rating
@@ -348,7 +385,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -369,7 +406,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -390,7 +427,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -411,7 +448,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -433,7 +470,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -454,7 +491,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -475,7 +512,7 @@
                     <!--Blank Link-->
                     <div class="columns is-mobile refunparent">
                       <div class="image listingimg column is-one-third">
-                        <img src="house.png" alt="House image"/>
+                        <img src="assets/picture/house.png" alt="House image"/>
                       </div>
                                           
                       <div class="listingdesc column auto">
@@ -493,8 +530,10 @@
           </div>
         </section>
         </main>
-        <footer>
-
+        <footer class="footer">
+          <h1 style="text-align: center; font-size: large">
+            <b>Restify</b> by Le, Prakash, and Zhang.
+          </h1>
         </footer>
     </body>
 </html>
