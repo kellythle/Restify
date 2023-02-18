@@ -162,7 +162,7 @@
                                           <h6 class="title is-6"></h6>
                                       </td>
                                       <td>
-                                          <a class="button is-rounded is-warning" href="changehostreservations.html">Requested Cancellation</a>
+                                          <button class="button is-rounded is-warning">Requested Cancellation</button>
                                       </td>
                                   </tr>
                               </tbody>
@@ -179,7 +179,6 @@
                   </div>
                   <div class="columns pb-6">
                       <div class="column">
-                        <div class="table-container">
                           <table class="table is-hoverable is-narrow" style="margin-left:auto;margin-right:auto;">
                               <thead>
                                   <tr>
@@ -249,10 +248,28 @@
                                   </tr>
                               </tbody>
                           </table>
-                        </div>
                       </div>
                   </div>
               </section>
+              <div class="modal is-active">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                    <p class="modal-card-title">Modify Reservation Status</p>
+                    <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <p class="title is-6">The guest has requested to cancel this reservation. If 
+                            approved the property will not be reserved for this guest.
+                        </p>
+                    </section>
+                    <footer class="modal-card-foot">
+                    <a href="hostreservations.html" class="button is-success">Approve reservation cancellation</a>
+                    <a href="hostreservations.html" class="button is-danger">Deny reservation cancellation</a>
+                    <a href="hostreservations.html" class="button">Cancel</a>
+                    </footer>
+                </div>
+            </div>
           </main>
         </div>
         <footer id="footer">
