@@ -144,6 +144,15 @@ a.propertydetails {
     right: 1rem;
 }
 
+#pricing {
+  font-size: large;
+} @media only screen and (max-width: 500px) {
+  #pricing {
+    font-size: x-small;
+    padding-left: 3rem;
+  }
+}
+
 @-webkit-keyframes spinAround {
     from {
       transform: rotate(0deg);
