@@ -78,7 +78,7 @@ a.tilelink {
     background-color: #f1f1f1;
 }
 
-button.propertydetails {
+a.propertydetails {
     margin: 0.5rem;
     text-decoration: solid;
 }
