@@ -15,8 +15,8 @@ class Property(models.Model):
     date_created = models.DateField(null=False)
     price_night = models.FloatField(null=False)
     # availability = models.
+    amenities = models.ManyToManyField('PropertyImages')
     description = models.CharField(max_length=2000)
-    property_images = models.ImageField
 
 
 class PropertyImages(models.Model):
