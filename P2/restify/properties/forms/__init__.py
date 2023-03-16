@@ -1,2 +1,2 @@
-from .createpropertyform import AddPropertyForm
+from .createpropertyform import AddPropertyForm, PropertyImageForm
 from .updatepropertyform import EditPropertyForm

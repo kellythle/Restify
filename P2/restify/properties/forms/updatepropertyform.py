@@ -11,3 +11,7 @@ class EditPropertyForm(forms.ModelForm):
     def clean():
         data = super().clean()
         return data
+
+
+class EditPropertyImagesForm(forms.Form):
+    pass
