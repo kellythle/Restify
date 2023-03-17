@@ -1,4 +1,3 @@
-from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -8,12 +7,4 @@ from properties.models import Property, PropertyImages
 from properties.serializers import PropertySerializer, PropertyImageSerializer
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.generics import DestroyAPIView
-
-
-class DeleteProperty(DestroyAPIView):
-    serializer_class = PropertySerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        prop = get_object_or_404(Property, id=self.kwargs['pk'])
+from rest_framework.generics import RetrieveAPIView

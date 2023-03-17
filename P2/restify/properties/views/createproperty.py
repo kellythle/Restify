@@ -8,7 +8,8 @@ from properties.models import Property, PropertyImages
 from properties.serializers import PropertySerializer
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.generies import CreateAPIView, APIView
+from rest_framework.generics import CreateAPIView  # APIView
+from rest_framework.views import APIView
 
 
 class AddProperty(APIView):

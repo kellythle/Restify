@@ -8,7 +8,7 @@ from properties.models import Property, PropertyImages
 from properties.serializers import PropertySerializer, PropertyImageSerializer
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.generies import ListAPIView, APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 
 

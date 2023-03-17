@@ -1,7 +1,20 @@
 from django.db import models
-from accounts.models import User
+#from accounts.models import User
+from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
+from multiselectfield.validators import MaxValueMultiFieldValidator
 
 # Create your models here.
+
+amenities = (
+    (1, 'Laundry'),
+    (2, 'Parking'),
+    (3, 'Room Service'),
+    (4, 'Swimming Pool'),
+    (5, 'Gym'),
+    (6, 'Breakfast included'),
+    (7, "Late Checkout")
+)
 
 
 class Property(models.Model):
@@ -15,7 +28,8 @@ class Property(models.Model):
     date_created = models.DateField(null=False)
     price_night = models.FloatField(null=False)
     # availability = models.
-    # amenities = models.ManyToManyField('PropertyImages')
+    amenities = MultiSelectField(choices=amenities, validators=[
+                                 MaxValueMultiFieldValidator(8)])
     description = models.CharField(max_length=2000)
 
 
@@ -23,3 +37,21 @@ class PropertyImages(models.Model):
     property = models.ForeignKey(
         Property, on_delete=models.CASCADE, related_name='property_images')
     image = models.ImageField(null=False)
+
+
+notifications = {
+    1: "Host new reservation",
+    2: "Host cancellation request",
+    3: "Guest approved reservation",
+    4: "Guest approved cancellation"
+}
+
+
+class Notifications(models.Model):
+    recipient = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='profilenotis')
+    recipient_is_host = models.BooleanField(null=False)
+    reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE)
+    is_read = models.BooleanField(default=False)
+
+    notification_type = models.IntegerField()
