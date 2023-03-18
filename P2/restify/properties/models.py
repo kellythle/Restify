@@ -58,6 +58,14 @@ class Notifications(models.Model):
 
 
 class Reservation(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='reservations')
+    property = models.ForeignKey(
+        Property, on_delete=models.CASCADE, related_name='reservations')
+    start_date = models.DateField()
+    end_date = models.DateField()
+    message = models.CharField(max_length=500)
+
     PENDING = 'pend'
     DENIED = 'deni'
     EXPIRED = 'expi'
