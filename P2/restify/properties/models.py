@@ -1,5 +1,5 @@
 from django.db import models
-#from accounts.models import User
+# from accounts.models import User
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from multiselectfield.validators import MaxValueMultiFieldValidator
@@ -55,3 +55,23 @@ class Notifications(models.Model):
     is_read = models.BooleanField(default=False)
 
     notification_type = models.IntegerField()
+
+
+class Reservation(models.Model):
+    PENDING = 'pend'
+    DENIED = 'deni'
+    EXPIRED = 'expi'
+    APPROVED = 'appr'
+    CANCELED = 'canc'
+    TERMINATED = 'term'
+    COMPLETED = 'comp'
+    STATES = (
+        (PENDING, 'pend'),
+        (DENIED, 'deni'),
+        (EXPIRED, 'expi'),
+        (APPROVED, 'appr'),
+        (CANCELED, 'canc'),
+        (TERMINATED, 'term'),
+        (COMPLETED, 'comp'),
+    )
+    status = models.CharField(max_length=4, choices=STATES, default=PENDING)

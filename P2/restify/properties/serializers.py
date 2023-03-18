@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from rest_framework import fields
-from properties.models import Property, PropertyImages, amenities
+from properties.models import Property, PropertyImages, Reservation, amenities
 
 
 class PropertySerializer(ModelSerializer):
@@ -22,3 +22,11 @@ class PropertyImageSerializer(ModelSerializer):
     class Meta:
         model = PropertyImages
         fields = ['image']
+
+
+class ReservationSerializer(ModelSerializer):
+
+    class Meta:
+        model = Reservation
+        fields = ['user', 'property', 'start_date',
+                  'end_date', 'message', 'status']
