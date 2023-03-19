@@ -83,3 +83,15 @@ class Reservation(models.Model):
         (COMPLETED, 'comp'),
     )
     status = models.CharField(max_length=4, choices=STATES, default=PENDING)
+
+
+class Comments(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_type = models.BooleanField(null=False)  # 0 is user, 1 is property
+    is_root_comment = models.BooleanField(null=False)  # 0 is reply, 1 is root
+    parent_comment = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True)
+    comment_text = models.CharField(max_length=300)
+    created_at = models.DateTimeField()
+    related_reservation = models.ForeignKey(
+        Reservation, on_delete=models.CASCADE)
