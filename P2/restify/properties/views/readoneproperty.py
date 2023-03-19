@@ -11,8 +11,15 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.views import APIView
 
 
-class ReadProperty(RetrieveAPIView):
-    serializer_class = PropertySerializer
+class ReadProperty(APIView):
+    # serializer_class = PropertySerializer
 
-    def get_object(self):
-        return get_object_or_404(Property, id=self.kwargs.get('pk'))
+    def get(self, request, pk):
+        ob = get_object_or_404(Property, id=self.kwargs.get('pk'))
+        images = PropertyImages.objects.all().filter(property=ob)
+        ob = Response(PropertySerializer(ob).data)
+        images = {'images': [image.image_url for image in images]}
+
+        ob.data['images'] = images
+        print(ob.data)
+        return ob
