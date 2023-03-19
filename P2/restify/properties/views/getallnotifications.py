@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from properties.forms import AddPropertyForm, EditPropertyForm, PropertyImageForm
 from properties.models import Notifications, Reservation, notifications
-from properties.serializers import PropertySerializer, PropertyImageSerializer
+from properties.serializers import NotificationSerializer
 from datetime import datetime
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, DestroyAPIView, CreateAPIView
@@ -20,7 +20,7 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class GetUserNotifications(ListAPIView):
-    serializer_class = Notifications
+    serializer_class = NotificationSerializer
     pagination_class = StandardResultsSetPagination
     permission_classes = [IsAuthenticated]
 
@@ -35,7 +35,7 @@ class GetUserNotifications(ListAPIView):
 
 
 class DeleteUserNotification(DestroyAPIView):
-    serializer_class = Notifications
+    serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
@@ -74,7 +74,7 @@ class UpdateNotificationRead(APIView):
 
 class CreateNotification(CreateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = Notifications
+    serializer_class = NotificationSerializer
 
     def post(self, request, pk):
         if request.user.id != pk:

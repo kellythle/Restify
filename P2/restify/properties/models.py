@@ -1,5 +1,5 @@
 from django.db import models
-# from accounts.models import User
+from accounts.models import CustomUser
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from multiselectfield.validators import MaxValueMultiFieldValidator
@@ -87,7 +87,8 @@ class Reservation(models.Model):
 
 
 class Comments(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     comment_type = models.BooleanField(null=False)  # 0 is user, 1 is property
     is_root_comment = models.BooleanField(null=False)  # 0 is reply, 1 is root
     parent_comment = models.ForeignKey(

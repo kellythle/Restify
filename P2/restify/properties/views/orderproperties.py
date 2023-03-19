@@ -19,7 +19,7 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class OrderSortProperties(ListAPIView):
-    serializer_class = Property
+    serializer_class = PropertySerializer
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
