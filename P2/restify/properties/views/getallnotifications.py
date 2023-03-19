@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from properties.forms import AddPropertyForm, EditPropertyForm, PropertyImageForm
-from properties.models import Notifications, PropertyImages
+from properties.models import Notifications, Reservation, notifications
 from properties.serializers import PropertySerializer, PropertyImageSerializer
 from datetime import datetime
 from rest_framework.response import Response
@@ -68,9 +68,23 @@ class UpdateNotificationRead(APIView):
                 "Error": "Not your notification"
             }])
         noti.is_read = not noti.is_read
+        noti.save()
         return HttpResponse(status=200)
 
 
 class CreateNotification(CreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = Notifications
+
+    def post(self, request, pk):
+        if request.user.id != pk:
+            return Response([{
+                "Error": "Not your notification"
+            }])
+        new_notification = Notifications.objects.create(recipient=request.data.get('recipient'),
+                                                        recipient_is_host=request.data.get(
+                                                            'is_host'),
+                                                        reservation=request.data.get(
+                                                            'reservation'), is_read=False,
+                                                        notification_type=notifications[request.data.get('message')])
+        return super().post(request, pk)
