@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from models import Property, Reservation
+from properties.models import Property, Reservation
 from properties.serializers import ReservationSerializer
 from rest_framework.response import Response
 from rest_framework.generics import UpdateAPIView

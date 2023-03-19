@@ -13,7 +13,7 @@ class PropertySerializer(ModelSerializer):
 
     class Meta:
         model = Property
-        exclude = ['amenities']
+        exclude = []
 
 
 class PropertyImageSerializer(ModelSerializer):

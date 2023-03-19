@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
-from models import Reservation
+from properties.models import Reservation
 from properties.serializers import ReservationSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView

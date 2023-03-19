@@ -1,4 +1,4 @@
-from models import Reservation
+from properties.models import Reservation
 from properties.serializers import ReservationSerializer
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
