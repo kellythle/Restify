@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 
 class CustomUser(AbstractUser):
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     isHost = models.BooleanField(default=False)
 
@@ -31,3 +31,16 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+class avatarImage(models.Model):
+    image = models.ImageField(null=False)
+    image_url = models.CharField(max_length=2000)
+    user = models.ManyToManyField(
+        CustomUser,
+        through='UserAvatar',
+        related_name='avatars'
+    )
+
+class UserAvatar(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    avatar = models.ForeignKey(avatarImage, on_delete=models.CASCADE)

@@ -8,3 +8,4 @@ from .deletereservation import DeleteReservation
 from .guestreservation import GuestReservation
 from .hostreservation import HostReservation
 from .updatereservation import EditReservation
+from .readoneproperty import ReadProperty

@@ -30,7 +30,7 @@ class Property(models.Model):
     price_night = models.FloatField(null=False)
     # availability = models.
     amenities = MultiSelectField(choices=amenities, validators=[
-                                 MaxValueMultiFieldValidator(8)], default=[])
+                                 MaxValueMultiFieldValidator(7)], default=[])
     description = models.CharField(max_length=2000)
 
 
@@ -38,6 +38,7 @@ class PropertyImages(models.Model):
     property = models.ForeignKey(
         Property, on_delete=models.CASCADE, related_name='property_images')
     image = models.ImageField(null=False)
+    image_url = models.CharField(max_length=2000)
 
 
 notifications = {
