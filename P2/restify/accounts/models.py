@@ -32,6 +32,7 @@ class CustomUser(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
+
 class avatarImage(models.Model):
     image = models.ImageField(null=False)
     image_url = models.CharField(max_length=2000)
@@ -40,6 +41,7 @@ class avatarImage(models.Model):
         through='UserAvatar',
         related_name='avatars'
     )
+
 
 class UserAvatar(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

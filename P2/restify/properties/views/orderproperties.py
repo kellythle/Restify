@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -13,7 +13,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 100
+    page_size = 1
     page_size_query_param = 'page_size'
     max_page_size = 1000
 
@@ -21,28 +21,33 @@ class StandardResultsSetPagination(PageNumberPagination):
 class OrderSortProperties(ListAPIView):
     serializer_class = PropertySerializer
     pagination_class = StandardResultsSetPagination
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         properties = Property.objects.all()
-        if self.kwargs.get('groupsize'):
+        if self.request.data.get('groupsize'):
             properties = properties.filter(
-                number_of_beds__gt=self.kwargs.get('groupsize'))
-        if self.kwargs.get('minprice'):
+                number_of_beds__gt=self.request.data.get('groupsize'))
+        if self.request.data.get('minprice'):
             properties = properties.filter(
-                price_night__gt=self.kwargs.get('minprice'))
-        if self.kwargs.get('maxprice'):
+                price_night__gt=self.request.data.get('minprice'))
+        if self.request.data.get('maxprice'):
             properties = properties.filter(
-                price_night__lt=self.kwargs.get('maxprice'))
-        if self.kwargs.get('numbeds'):
+                price_night__lt=self.request.data.get('maxprice'))
+        if self.request.data.get('numbeds'):
             properties = properties.filter(
-                number_of_beds__gt=self.kwargs.get('numbeds'))
-        if self.kwargs.get('sort'):
-            if self.kwargs.get('sort') == 'prasc':
+                number_of_beds__gt=self.request.data.get('numbeds'))
+        if self.request.data.get('amenities'):
+            lst = self.request.data.get('amenities')
+            for amenity in lst:
+                properties = properties.filter(amenities=amenity)
+        if self.request.data.get('sort'):
+            if self.request.data.get('sort') == 'prasc':
                 properties = properties.order_by('price_night')
-            elif self.kwargs.get('sort') == 'prdec':
+            elif self.request.data.get('sort') == 'prdec':
                 properties = properties.order_by('-price_night')
-            elif self.kwargs.get('sort') == 'mgasc':
+            elif self.request.data.get('sort') == 'mgasc':
                 properties = properties.order_by('groupsize')
-            elif self.kwargs.get('sort') == 'mgdec':
+            elif self.request.data.get('sort') == 'mgdec':
                 properties = properties.order_by('-groupsize')
         return properties

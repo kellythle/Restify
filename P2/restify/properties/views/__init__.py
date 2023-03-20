@@ -9,3 +9,5 @@ from .guestreservation import GuestReservation
 from .hostreservation import HostReservation
 from .updatereservation import EditReservation
 from .readoneproperty import ReadProperty
+from .viewcomment import GetPropertyCommentThreads, GetUserCommentThreads
+from .writecomment import CreateComment

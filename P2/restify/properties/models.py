@@ -92,12 +92,18 @@ class Reservation(models.Model):
 
 class Comments(models.Model):
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='my_comments')
     comment_type = models.BooleanField(null=False)  # 0 is user, 1 is property
     is_root_comment = models.BooleanField(null=False)  # 0 is reply, 1 is root
+    child_comment = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True, related_name='child')
     parent_comment = models.ForeignKey(
-        "self", on_delete=models.CASCADE, null=True)
+        'self', on_delete=models.CASCADE, null=True, related_name='parent')
     comment_text = models.CharField(max_length=300)
     created_at = models.DateTimeField()
-    related_reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE)
+    related_property = models.ForeignKey(
+        Property, on_delete=models.CASCADE, null=True)
+    related_user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, null=True)
+    # related_reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name='reservation',
+    #                                         null=True)

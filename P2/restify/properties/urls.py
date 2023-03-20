@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import AddProperty, EditProperty, DeleteProperty, OrderSortProperties, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
-    CreateNotification, UpdateNotificationRead, ReadProperty
+    CreateNotification, UpdateNotificationRead, ReadProperty, GetPropertyCommentThreads, GetUserCommentThreads, \
+    CreateComment
 
 app_name = 'properties'
 urlpatterns = [
@@ -34,5 +35,11 @@ urlpatterns = [
          UpdateNotificationRead.as_view(), name='updatereadnoti'),
     path('usernotifications/<int:pk>/create/',
          CreateNotification.as_view(), name='createnoti'),
+    path('propertycomments/<int:pk>/',
+         GetPropertyCommentThreads.as_view(), name='viewpropcomments'),
+    path('usercomments/<int:pk>/',
+         GetUserCommentThreads.as_view(), name='viewusercomments'),
+    path('createcomment/<int:pk>/',
+         CreateComment.as_view(), name='createcomments'),
 
 ]
