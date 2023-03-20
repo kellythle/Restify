@@ -1,10 +1,17 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from rest_framework import fields
 from properties.models import Property, PropertyImages, Reservation, amenities
+from rest_framework.serializers import StringRelatedField
+
+
 
 
 class PropertyImageSerializer(ModelSerializer):
-    owner = Property(read_only=True)
+    # owner = Property(read_only=True) Commented out because it was causing an error - girish
+    # replaced with the line below
+    owner = StringRelatedField(read_only=True)
+
+
 
     class Meta:
         model = PropertyImages

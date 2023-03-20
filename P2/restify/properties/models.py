@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from multiselectfield.validators import MaxValueMultiFieldValidator
+from django.conf import settings
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ amenities = (
 
 class Property(models.Model):
     owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='properties')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='properties')
     property_name = models.CharField(max_length=500, null=False)
     address = models.CharField(max_length=500, null=False)
     group_size = models.PositiveIntegerField(null=False)
@@ -29,7 +30,7 @@ class Property(models.Model):
     price_night = models.FloatField(null=False)
     # availability = models.
     amenities = MultiSelectField(choices=amenities, validators=[
-                                 MaxValueMultiFieldValidator(8)])
+                                 MaxValueMultiFieldValidator(8)], default=[])
     description = models.CharField(max_length=2000)
 
 
@@ -49,7 +50,7 @@ notifications = {
 
 class Notifications(models.Model):
     recipient = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='profilenotis')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profilenotis')
     recipient_is_host = models.BooleanField(null=False)
     reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE)
     is_read = models.BooleanField(default=False)
@@ -59,7 +60,7 @@ class Notifications(models.Model):
 
 class Reservation(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='reservations')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reservations')
     property = models.ForeignKey(
         Property, on_delete=models.CASCADE, related_name='reservations')
     start_date = models.DateField()
