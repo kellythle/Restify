@@ -1,6 +1,7 @@
 from rest_framework.serializers import StringRelatedField
 from properties.models import Property, PropertyImages, Reservation, amenities, Notifications, \
-    Comments
+    Comments, Amenities
+from django.shortcuts import get_object_or_404
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField
 from rest_framework import fields
 
@@ -26,7 +27,7 @@ class PropertyImageSerializer(ModelSerializer):
 class PropertySerializer(ModelSerializer):
     # images = SerializerMethodField('image_serializer')
     images = PropertyImageSerializer(many=True, read_only=True)
-    amenities = fields.MultipleChoiceField(choices=amenities)
+    amenities = SerializerMethodField('amenity_serializer')
 
     # def image_serializer(self):
     #     images = PropertyImages.objects.filter(owner=self.id)
@@ -46,6 +47,13 @@ class PropertySerializer(ModelSerializer):
                   'description',
                   'images',
                   ]
+
+    def amenity_serializer(self, obj):
+        amenities = []
+        numbers = obj.amenities.all()
+        for amenity in numbers:
+            amenities.append(Amenities.objects.get(id=amenity.id).amenity)
+        return amenities
 
 
 class NotificationSerializer(ModelSerializer):

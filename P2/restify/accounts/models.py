@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class CustomUser(AbstractUser):
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
-    isHost = models.BooleanField(default=False)
+    isHost = models.BooleanField(default=True)
 
     groups = models.ManyToManyField(
         'auth.Group',

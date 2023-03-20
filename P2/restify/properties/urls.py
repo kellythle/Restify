@@ -7,8 +7,10 @@ app_name = 'properties'
 urlpatterns = [
     path('addproperty/', AddProperty.as_view(), name='createproperty'),
     path('editproperty/<int:pk>/', EditProperty.as_view(), name='editproperty'),
-    path('editimgproperty/<int:pk>/',
-         EditPropertyImages.as_view(), name='editimgproperty'),
+    path('editingproperty/<int:pk>/',
+         EditProperty.as_view(), name='editingproperty'),
+    path('editingpropertyimages/<int:pk>/',
+         EditPropertyImages.as_view(), name='editingpropertyimg'),
     path('deleteproperty/<int:pk>/',
          DeleteProperty.as_view(), name='deleteproperty'),
     path('getproperty/<int:pk>/', ReadProperty.as_view(), name='getproperty'),

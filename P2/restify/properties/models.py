@@ -28,10 +28,13 @@ class Property(models.Model):
     number_of_baths = models.PositiveIntegerField(null=False)
     date_created = models.DateField(null=False)
     price_night = models.FloatField(null=False)
-    # availability = models.
-    amenities = MultiSelectField(choices=amenities, validators=[
-                                 MaxValueMultiFieldValidator(7)], default=[])
+    amenities = models.ManyToManyField('Amenities')
     description = models.CharField(max_length=2000)
+
+
+class Amenities(models.Model):
+    amenity = models.CharField(max_length=300)
+    # properties = models.ManyToManyField(Property, )
 
 
 class PropertyImages(models.Model):

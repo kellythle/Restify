@@ -1,7 +1,7 @@
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from accounts.models import CustomUser
 from django.urls import reverse_lazy
 from properties.forms import AddPropertyForm, EditPropertyForm, PropertyImageForm
 from properties.models import Property, PropertyImages
@@ -15,5 +15,15 @@ class DeleteProperty(DestroyAPIView):
     serializer_class = PropertySerializer
     permission_classes = [IsAuthenticated]
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        owner = instance.owner
+        user = get_object_or_404(CustomUser, id=owner.id)
+        if user != self.request.user:
+            return Response({
+                "Error: Permissions denied"
+            })
+        return super().destroy(request)
+
     def get_object(self):
-        prop = get_object_or_404(Property, id=self.kwargs['pk'])
+        return get_object_or_404(Property, id=self.kwargs['pk'])
