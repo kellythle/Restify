@@ -59,7 +59,7 @@ class Notifications(models.Model):
     reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE)
     is_read = models.BooleanField(default=False)
     notification_type = models.IntegerField()
-    message = models.CharField(max_length=600)
+    notification = models.CharField(max_length=600, default=None)
 
 
 class Reservation(models.Model):

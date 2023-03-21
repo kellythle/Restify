@@ -25,7 +25,11 @@ class CreateReservation(APIView):
             # checks if dates are available
             for reserv in reservations:
                 if reserv.start_date <= end_date and reserv.end_date >= start_date and reserv.status == 'appr':
-                    return Response(status=403)
+                    return Response([{
+                        'details': 'This property is not available during the dates you have selected.'}])
+                if reserv.user == user and reserv.start_date <= end_date and reserv.end_date >= start_date and reserv.status == 'pend':
+                    return Response([{
+                        'details': 'There has already been a reservation made for you within these dates.'}])
             new_reserv = Reservation.objects.create(
                 user=user,
                 property=property,
