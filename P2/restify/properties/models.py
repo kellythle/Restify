@@ -78,6 +78,7 @@ class Reservation(models.Model):
     CANCELED = 'canc'
     TERMINATED = 'term'
     COMPLETED = 'comp'
+    PENDINGCANCELLATION = 'peca'
     STATES = (
         (PENDING, 'pend'),
         (DENIED, 'deni'),
@@ -86,6 +87,7 @@ class Reservation(models.Model):
         (CANCELED, 'canc'),
         (TERMINATED, 'term'),
         (COMPLETED, 'comp'),
+        (PENDINGCANCELLATION, 'peca')
     )
     status = models.CharField(max_length=4, choices=STATES, default=PENDING)
 
