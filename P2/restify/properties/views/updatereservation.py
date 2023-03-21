@@ -27,7 +27,8 @@ class EditReservation(UpdateAPIView):
                     recipient=property.owner,
                     recipient_is_host=False,
                     reservation=reservation,
-                    notification_type=2
+                    notification_type=2,
+                    notification=f"Your property {property.property_name} has a cancellation request from {reservation.user}."
                 )
                 status = 'peca'
                 reservation.status = status
@@ -46,7 +47,8 @@ class EditReservation(UpdateAPIView):
                     recipient=property.owner,
                     recipient_is_host=True,
                     reservation=reservation,
-                    notification_type=3
+                    notification_type=3,
+                    notification=f"Your reservation for {property.property_name} from {reservation.start_date} to {reservation.end_date} has been approved."
                 )
                 status = 'appr'
                 reservation.status = status
@@ -60,7 +62,8 @@ class EditReservation(UpdateAPIView):
                     recipient=property.owner,
                     recipient_is_host=True,
                     reservation=reservation,
-                    notification_type=4
+                    notification_type=4,
+                    notification=f"Your cancellation request for {property.property_name} from {reservation.start_date} to {reservation.end_date} has been approved."
                 )
                 status = 'canc'
                 reservation.status = status

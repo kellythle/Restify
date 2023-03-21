@@ -37,7 +37,8 @@ class CreateReservation(APIView):
                 recipient=property.owner,
                 recipient_is_host=True,
                 reservation=new_reserv,
-                notification_type=1
+                notification_type=1,
+                notification=f"{property.property_name} has a new pending request from {start_date} to {end_date}."
             )
         serialized = ReservationSerializer(new_reserv).data
         return Response(serialized)
