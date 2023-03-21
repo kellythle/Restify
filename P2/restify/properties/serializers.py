@@ -63,9 +63,25 @@ class NotificationSerializer(ModelSerializer):
 
 
 class CommentsSerializer(ModelSerializer):
+    child_comment = SerializerMethodField()
+
     class Meta:
         model = Comments
-        exclude = []
+        fields = ['author',
+                  'comment_type',  # 0 is user, 1 is property
+                  'is_root_comment',  # 0 is reply, 1 is root
+                  'parent_comment',
+                  'child_comment',
+                  'comment_text',
+                  'created_at',
+                  'related_property',
+                  'related_user', ]
+
+    def get_child_comment(self, obj):
+        if obj.child_comment:
+            return CommentsSerializer(obj.child_comment).data
+        else:
+            return None
 
 
 class ReservationSerializer(ModelSerializer):

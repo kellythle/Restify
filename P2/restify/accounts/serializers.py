@@ -11,27 +11,28 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import avatarImage, UserAvatar
 
 
-
 User = get_user_model()
+
 
 class RegisterImageSerializer(serializers.ModelSerializer):
     image_url = SerializerMethodField('get_image_url')
 
     class Meta:
         model = avatarImage
-        fields = ['id', 'image', 'image_url']  
+        fields = ['id', 'image', 'image_url']
 
     def get_image_url(self, obj):
         request = self.context.get("request")
         return request.build_absolute_uri(obj.image.url)
-    
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     avatar = RegisterImageSerializer(required=False)
 
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'password', 'first_name', 'last_name', 'email', 'isHost', 'avatar', 'phone_number')
+        fields = ('id', 'username', 'password', 'first_name',
+                  'last_name', 'email', 'isHost', 'avatar', 'phone_number')
         extra_kwargs = {'password': {'write_only': True}}
 
     def validate_phone_number(self, phone_number):
@@ -95,12 +96,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
+
 class ProfileSerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'avatar', 'phone_number', 'isHost')
+        fields = ('id', 'username', 'first_name', 'last_name',
+                  'email', 'avatar', 'phone_number', 'isHost')
         extra_kwargs = {
             'username': {'read_only': True}
         }
@@ -112,4 +115,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             return avatar_obj.image_url
         except ObjectDoesNotExist:
             return None
-
