@@ -1,4 +1,6 @@
-from properties.models import Reservation
+from django.shortcuts import get_object_or_404
+from accounts.models import CustomUser
+from properties.models import Reservation, Property
 from properties.serializers import ReservationSerializer
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
@@ -9,7 +11,8 @@ class HostReservation(ListAPIView):
     pagination_class = PageNumberPagination
 
     def get_queryset(self):
-        query = Reservation.objects.filter(property__owner=self.request.user)
+        user = get_object_or_404(CustomUser, pk=self.request.user.id)
+        query = Reservation.objects.filter(property__owner=user)
 
         status = self.request.data.get('status')
         if status is not None:
