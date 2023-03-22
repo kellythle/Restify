@@ -2,14 +2,12 @@ from django.urls import path
 from .views import AddProperty, EditProperty, DeleteProperty, OrderSortProperties, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
     CreateNotification, UpdateNotificationRead, ReadProperty, CreatePropertyComment, CreatePropertyResponseComment, \
-    GetPropertyCommentThreads, GetUserCommentThreads
+    GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment
 
 app_name = 'properties'
 urlpatterns = [
     path('addproperty/', AddProperty.as_view(), name='createproperty'),
     path('editproperty/<int:pk>/', EditProperty.as_view(), name='editproperty'),
-    path('editingproperty/<int:pk>/',
-         EditProperty.as_view(), name='editingproperty'),
     path('editingpropertyimages/<int:pk>/',
          EditPropertyImages.as_view(), name='editingpropertyimg'),
     path('deleteproperty/<int:pk>/',
@@ -40,6 +38,7 @@ urlpatterns = [
          CreatePropertyResponseComment.as_view(), name='createcomm'),
     path('propertycomments/<int:pk>/', GetPropertyCommentThreads.as_view(),
          name='propertycomms'),
-    path('usercomments/<int:pk>/', GetUserCommentThreads.as_view(), name='usercomms')
+    path('usercomments/<int:pk>/', GetUserCommentThreads.as_view(), name='usercomms'),
+    path('createusercomment/<int:pk>/', CreateUserComment.as_view(), name='newusercomment')
 
 ]

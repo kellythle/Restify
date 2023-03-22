@@ -36,6 +36,10 @@ class AddProperty(APIView):
                                                date_created=data['date_created'], price_night=data["price_night"],
                                                description=data['description'])
         for amenity in amenities:
+            if not Amenities.objects.filter(id=amenity).exists():
+                return Response({
+                    "Error": "At least one amenity doesn't exist"
+                })
             new_property.amenities.add(Amenities.objects.get(id=amenity))
         for i in images:
             img = PropertyImages.objects.create(

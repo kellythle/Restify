@@ -14,6 +14,10 @@ class EditProperty(UpdateAPIView):
         return get_object_or_404(Property, id=self.kwargs['pk'])
 
     def partial_update(self, request, pk):
+        if not Property.objects.filter(id=pk).exists():
+            return Response({
+                "Error": "Property doesn't exist"
+            })
         property = self.get_object()
         prop_owner = property.owner
         if request.user.id != prop_owner.id:
