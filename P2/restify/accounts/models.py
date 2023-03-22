@@ -34,15 +34,8 @@ class CustomUser(AbstractUser):
 
 
 class avatarImage(models.Model):
-    image = models.ImageField(null=False)
+    image = models.ImageField(null=True)
     image_url = models.CharField(max_length=2000)
-    user = models.ManyToManyField(
-        CustomUser,
-        through='UserAvatar',
-        related_name='avatars'
-    )
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='avatar')
 
 
-class UserAvatar(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    avatar = models.ForeignKey(avatarImage, on_delete=models.CASCADE)
