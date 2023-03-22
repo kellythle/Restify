@@ -20,7 +20,7 @@ class EditReservation(UpdateAPIView):
         user = get_object_or_404(CustomUser, pk=request.user.id)
         editedstatus = request.data.get('status')
         if user == reservation.user:
-            if reservation.status == 'pend' and editedstatus == 'canc':
+            if reservation.status == 'appr' and editedstatus == 'canc':
                 Notifications.objects.create(
                     recipient=reservation.property.owner,
                     recipient_is_host=False,
@@ -37,8 +37,8 @@ class EditReservation(UpdateAPIView):
                 return Response(serializer.data)
             else:
                 return Response([{
-                    'details': 'Permission denied'
-                }])
+                    'Error': 'Permission denied.'
+                }], status=403)
         if user == reservation.property.owner:
             if reservation.status == 'pend' and editedstatus == 'appr':
                 Notifications.objects.create(
@@ -72,8 +72,8 @@ class EditReservation(UpdateAPIView):
                 return Response(serializer.data)
             else:
                 return Response([{
-                    'details': 'Permission denied'
-                }])
+                    'Error': 'Permission denied.'
+                }], status=403)
         return Response([{
-            'details': 'Permission denied'
-        }])
+            'Error': 'Permission denied.'
+        }], status=403)

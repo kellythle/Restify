@@ -54,11 +54,11 @@ class DeleteUserNotification(DestroyAPIView):
         except:
             return Response([{
                 "Error": "Notification does not exist."
-            }])
+            }], status=400)
         if noti.recipient != user:
             return Response([{
                 "Error": "Not your notification."
-            }])
+            }], status=403)
         return noti.delete()
 
 
@@ -71,7 +71,7 @@ class UpdateNotificationRead(APIView):
         if request.user != recipient:
             return Response([{
                 "Error": "Not your notification."
-            }])
+            }], status=403)
         noti.is_read = not noti.is_read
         noti.save()
         return HttpResponse(status=200)
@@ -85,7 +85,7 @@ class CreateNotification(CreateAPIView):
         if request.user.id != pk:
             return Response([{
                 "Error": "Not your notification."
-            }])
+            }], status=403)
         new_notification = Notifications.objects.create(recipient=request.data.get('recipient'),
                                                         recipient_is_host=request.data.get(
                                                             'is_host'),

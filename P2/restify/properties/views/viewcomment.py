@@ -43,11 +43,11 @@ class GetUserCommentThreads(ListAPIView):
             overlap = user_reservations.filter(property__in=owner_properties)
             if not overlap:
                 return Response({
-                    "Details": "No valid users to view"
-                })
+                    "Error": "No valid users to view."
+                }, status=400)
             parent_comments = Comments.objects.all().filter(comment_type=False).filter(
                 is_root_comment=True).filter(related_user=self.kwargs.get('pk'))
             return parent_comments
         else:
             raise ValidationError(
-                detail="You must be a host to view a user\'s profile comments.")
+                detail="You must be a host to view a user\'s profile comments.", status=403)
