@@ -8,6 +8,7 @@ from rest_framework.generics import ListAPIView  # APIView
 # from rest_framework.views import APIView
 from django.conf import settings
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.exceptions import ValidationError
 
 
 class StandardResultsSetPagination(PageNumberPagination):
@@ -34,19 +35,19 @@ class GetUserCommentThreads(ListAPIView):
 
     def get_queryset(self):
         owner = self.request.user
-        if not owner.isHost:
-            return Response({
-                "Details": "Must be a host"
-            })
-        user = CustomUser.objects.get(id=self.kwargs.get('pk'))
-        status = ['appr', 'comp', 'pend']
-        user_reservations = user.reservations.all().filter(status__in=status)
-        owner_properties = owner.properties.all()
-        overlap = user_reservations.filter(property__in=owner_properties)
-        if not overlap:
-            return Response({
-                "Details": "No valid users to view"
-            })
-        parent_comments = Comments.objects.all().filter(comment_type=False).filter(
-            is_root_comment=True).filter(related_user=self.kwargs.get('pk'))
-        return parent_comments
+        if owner.isHost:
+            user = CustomUser.objects.get(id=self.kwargs.get('pk'))
+            status = ['appr', 'comp', 'pend']
+            user_reservations = user.reservations.all().filter(status__in=status)
+            owner_properties = owner.properties.all()
+            overlap = user_reservations.filter(property__in=owner_properties)
+            if not overlap:
+                return Response({
+                    "Details": "No valid users to view"
+                })
+            parent_comments = Comments.objects.all().filter(comment_type=False).filter(
+                is_root_comment=True).filter(related_user=self.kwargs.get('pk'))
+            return parent_comments
+        else:
+            raise ValidationError(
+                detail="You must be a host to view a user\'s profile comments.")

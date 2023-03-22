@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from datetime import datetime
+from datetime import datetime, date
 from accounts.models import CustomUser
 from properties.models import Reservation, Notifications, Property
 from properties.serializers import ReservationSerializer
@@ -21,6 +21,12 @@ class CreateReservation(APIView):
             self.request.data.get('end_date'), '%Y-%m-%d').date()
         message = self.request.data.get('message')
         reservations = Reservation.objects.filter(property=property)
+        if end_date > start_date:
+            return Response([{
+                'details': 'Your trip\'s end date must be after its start date.'}])
+        if start_date < date.today():
+            return Response([{
+                'details': 'Your trip must start from at least today or forward dates.'}])
         if request.method == 'POST':
             # checks if dates are available
             for reserv in reservations:

@@ -8,74 +8,87 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 
 
-class CreateComment(CreateAPIView):
+class CreatePropertyComment(CreateAPIView):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
 
     def create(self, request, pk):
-        comment_type = request.data.get('comment_type')
-        is_root = request.data.get('is_root')
-        if comment_type:  # Is a property comment
-            if is_root:
-                user = request.user
-                property = get_object_or_404(Property, id=pk)
-                status = ['term', 'comp']
-                user_reservations = user.reservations.all().filter(status__in=status)
-                valid_stay = user_reservations.filter(property=property)
-                if not valid_stay:
-                    return Response({
-                        "Details": "No valid reservation"
-                    })
-                user_comments = user.my_comments.all().filter(
-                    is_root_comment=True).filter(property=property)
-                if len(valid_stay) >= len(user_comments):
-                    return Response({
-                        "Details": "Max number of comments reached for this property"
-                    })
+        user = request.user
+        property = get_object_or_404(Property, id=pk)
+        status = ['term', 'comp']
+        user_reservations = user.reservations.all().filter(status__in=status)
+        valid_stay = user_reservations.filter(property=property)
+        if not valid_stay:
+            return Response({
+                "Details": "No valid reservation"
+            })
+        user_comments = user.my_comments.all().filter(
+            is_root_comment=True).filter(related_property=property)
+        if len(valid_stay) <= len(user_comments):
+            return Response({
+                "Details": "Max number of comments reached for this property"
+            })
 
-                new_comment = Comments.objects.create(author=user, comment_type=comment_type, is_root_comment=is_root,
-                                                      child_comment=None, comment_text=request.data.get('message'),
-                                                      created_at=datetime.now(), related_property=property,
-                                                      related_user=None, parent_comment=None)
-                new_comment = CommentsSerializer(new_comment).data
-                return Response(new_comment)
-            else:  # is a reply
-                user = request.user
-                property = get_object_or_404(Property, id=pk)
-                parent_comment = Comments.objects.get(
-                    parent_comment=request.data.get('parent'))
-                if parent_comment.author == user:
-                    return Response({
-                        "Details": "Cannot comment consecutively"
-                    })
-                new_comment = Comments.objects.create(author=user, comment_type=comment_type, is_root_comment=is_root,
-                                                      child_comment=None, comment_text=request.data.get('message'),
-                                                      created_at=datetime.now(), related_property=property,
-                                                      related_user=None, parent_comment=parent_comment)
-                new_comment = CommentsSerializer(new_comment).data
-                return Response(new_comment)
+        new_comment = Comments.objects.create(author=user, comment_type=1, is_root_comment=1,
+                                              child_comment=None, comment_text=request.data.get('message'),
+                                              created_at=datetime.now(), related_property=property,
+                                              related_user=None, parent_comment=None)
+        new_comment = CommentsSerializer(new_comment).data
+        return Response(new_comment)
 
-        else:
-            # No replies, only parent comments
-            host = request.user
-            user = CustomUser.objects.get(id=pk)
-            properties = host.properties.all()
-            reservations = properties.reservations.all()
-            reservations = reservations.filter(user=user).filter(status='comp')
-            if not reservations:
-                return Response({
-                    "Details": "User has not completed a reservation at your properties"
-                })
-            past_comments = Comments.objects.all().filter(author=host)
-            past_comments = past_comments.filter(comment_type=comment_type)
-            past_comments = past_comments.filter(related_user=user)
-            if len(past_comments) >= len(reservations):
-                return Response({
-                    "Details": "Already commented on this user"
-                })
-            new_comment = Comments.objects.create(author=user, comment_type=comment_type, is_root_comment=is_root,
-                                                  child_comment=None, comment_text=request.data.get('message'),
-                                                  created_at=datetime.now(), related_property=None,
-                                                  related_user=user, parent_comment=None)
-            new_comment = CommentsSerializer(new_comment).data
-            return Response(new_comment)
+
+class CreatePropertyResponseComment(CreateAPIView):
+    serializer_class = CommentsSerializer
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, pk):
+        user = request.user
+        property = get_object_or_404(Property, id=pk)
+        parent_comment = Comments.objects.get(id=request.data.get('parent'))
+
+        if parent_comment.author == user:
+            return Response({
+                "Details": "Cannot comment consecutively"
+            })
+        new_comment = Comments.objects.create(author=user, comment_type=1, is_root_comment=0,
+                                              child_comment=None, comment_text=request.data.get('message'),
+                                              created_at=datetime.now(), related_property=property,
+                                              related_user=None, parent_comment=parent_comment)
+        parent_comment.child_comment = new_comment
+        parent_comment.save()
+        new_comment = CommentsSerializer(new_comment).data
+        return Response(new_comment)
+
+
+class CreateUserComment(CreateAPIView):
+    serializer_class = CommentsSerializer
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, pk):
+        host = request.user
+        user = CustomUser.objects.get(id=pk)
+        comment_type = 0
+        is_root = 1
+        # properties = host.properties.all()
+        # reservations = properties.reservation.all()
+        # reservations = reservations.filter(user=user).filter(status='comp')
+        reservations = Reservation.objects.filter(
+            property__owner=host, user=user, status='comp')
+        if not reservations:
+            return Response({
+                "Details": "User has not completed a reservation at your properties"
+            })
+        past_comments = Comments.objects.filter(
+            author=host, comment_type=comment_type, related_user=user)
+        # past_comments = past_comments.filter(comment_type=comment_type)
+        # past_comments = past_comments.filter(related_user=user)
+        if len(past_comments) >= len(reservations):
+            return Response({
+                "Details": "Already commented on this user"
+            })
+        new_comment = Comments.objects.create(author=host, comment_type=comment_type, is_root_comment=is_root,
+                                              child_comment=None, comment_text=request.data.get('message'),
+                                              created_at=datetime.now(), related_property=None,
+                                              related_user=user, parent_comment=None)
+        new_comment = CommentsSerializer(new_comment).data
+        return Response(new_comment)
