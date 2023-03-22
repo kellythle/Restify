@@ -4,36 +4,60 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField
 
 import re
-from .models import avatarImage, CustomUser, UserAvatar
+from .models import avatarImage, CustomUser, avatarImage
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import avatarImage, UserAvatar
+from .models import avatarImage
 
 
 User = get_user_model()
 
 
-class RegisterImageSerializer(serializers.ModelSerializer):
-    image_url = SerializerMethodField('get_image_url')
+# class RegisterImageSerializer(serializers.ModelSerializer):
+#     image_url = SerializerMethodField('get_image_url')
 
-    class Meta:
-        model = avatarImage
-        fields = ['id', 'image', 'image_url']
+#     class Meta:
+#         model = avatarImage
+#         fields = ['id', 'image', 'image_url']
 
-    def get_image_url(self, obj):
-        request = self.context.get("request")
-        return request.build_absolute_uri(obj.image.url)
+#     def get_image_url(self, obj):
+#         request = self.context.get("request")
+#         print("Here is the request: ", request)
+#         print("Here is the obj: ", obj)
+#         image_url = SerializerMethodField('get_image_url')
+#         print(image_url)
+#         if obj.image:  # Add this conditional check
+#             return request.build_absolute_uri(obj.image.url)
+#         else:
+#             return None
+
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    avatar = RegisterImageSerializer(required=False)
+    avatar_file = serializers.ImageField(write_only=True, required=False)
 
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'password', 'first_name',
-                  'last_name', 'email', 'isHost', 'avatar', 'phone_number')
+        fields = (
+            'id', 'username', 'password', 'first_name', 'last_name', 'email',
+            'isHost', 'phone_number', 'avatar_file'
+        )
         extra_kwargs = {'password': {'write_only': True}}
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        try:
+            avatar_obj = instance.avatar.all().first()
+            if avatar_obj:
+                request = self.context.get("request")
+                ret['avatar'] = request.build_absolute_uri(avatar_obj.image.url)
+            else:
+                ret['avatar'] = None
+        except ObjectDoesNotExist:
+            ret['avatar'] = None
+        return ret
+
 
     def validate_phone_number(self, phone_number):
         # Add your phone number validation logic here
@@ -75,10 +99,12 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         phone_number = validated_data.get('phone_number')
 
-        avatar_data = validated_data.pop('avatar', None)
 
         if errors:
             raise ValidationError(errors)
+        
+
+        avatar = validated_data.pop('avatar_file', None)
 
         user = CustomUser.objects.create_user(
             username=username,
@@ -90,12 +116,12 @@ class RegisterSerializer(serializers.ModelSerializer):
             phone_number=phone_number,
         )
 
-        if avatar_data:
-            avatar = avatarImage.objects.create(**avatar_data)
-            avatar.users.add(user)
+        if avatar:
+            avatar_obj = avatarImage.objects.create(user=user, image=avatar)
+            user.avatar.add(avatar_obj)
 
         return user
-
+        
 
 class ProfileSerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
@@ -110,8 +136,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_avatar(self, obj):
         try:
-            user_avatar = UserAvatar.objects.get(user=obj)
-            avatar_obj = user_avatar.avatar
-            return avatar_obj.image_url
+            avatar_obj = obj.avatar.first()  # Get the first AvatarImage related to the user
+            if avatar_obj:
+                request = self.context.get("request")
+                return request.build_absolute_uri(avatar_obj.image.url)
+            else:
+                return None
         except ObjectDoesNotExist:
             return None
+
