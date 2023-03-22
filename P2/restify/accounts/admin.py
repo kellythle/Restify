@@ -7,6 +7,6 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     fieldsets = UserAdmin.fieldsets + (
         ('Profile', {
-            'fields': ('avatar', 'phone_number', 'isHost')
+            'fields': ('phone_number', 'isHost')
         }),
     )
