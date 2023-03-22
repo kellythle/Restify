@@ -21,8 +21,8 @@ class DeleteProperty(DestroyAPIView):
         user = get_object_or_404(CustomUser, id=owner.id)
         if user != self.request.user:
             return Response({
-                "Error: Permissions denied"
-            })
+                "Error: Permission denied."
+            }, status=403)
         return super().destroy(request)
 
     def get_object(self):

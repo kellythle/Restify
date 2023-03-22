@@ -10,4 +10,4 @@ from .hostreservation import HostReservation
 from .updatereservation import EditReservation
 from .readoneproperty import ReadProperty
 from .viewcomment import GetPropertyCommentThreads, GetUserCommentThreads
-from .writecomment import CreateComment
+from .writecomment import CreatePropertyComment, CreatePropertyResponseComment, CreateUserComment

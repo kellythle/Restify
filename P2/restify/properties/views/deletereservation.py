@@ -19,5 +19,5 @@ class DeleteReservation(DestroyAPIView):
             return Response(status=200)
         else:
             return Response([{
-                'details': 'Permission denied'
-            }])
+                'Error': 'Permission denied.'
+            }], status=403)

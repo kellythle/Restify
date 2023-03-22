@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import AddProperty, EditProperty, DeleteProperty, OrderSortProperties, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
-    CreateNotification, UpdateNotificationRead, ReadProperty
+    CreateNotification, UpdateNotificationRead, ReadProperty, CreatePropertyComment, CreatePropertyResponseComment, \
+    GetPropertyCommentThreads, GetUserCommentThreads
 
 app_name = 'properties'
 urlpatterns = [
@@ -23,15 +24,22 @@ urlpatterns = [
          GuestReservation.as_view(), name='guestreservation'),
     path('hostreservation/',
          HostReservation.as_view(), name='hostreservation'),
-    path('editreservation/<int:pk>',
+    path('editreservation/<int:pk>/',
          EditReservation.as_view(), name='editreservation'),
-    path('usernotifcations/<int:pk>/',
+    path('usernotifications/',
          GetUserNotifications.as_view(), name='usernotis'),
-    path('usernotifications/<int:pk>/delete/<int:num>/',
+    path('usernotifications/delete/<int:pk>/',
          DeleteUserNotification.as_view(), name='deletenoti'),
-    path('usernotifications/<int:pk>/update_read/<int:num>/',
+    path('usernotifications/update_read/<int:pk>/',
          UpdateNotificationRead.as_view(), name='updatereadnoti'),
-    path('usernotifications/<int:pk>/create/',
+    path('usernotifications/create/<int:pk>/',
          CreateNotification.as_view(), name='createnoti'),
+    path('createcomment/<int:pk>/',
+         CreatePropertyComment.as_view(), name='createcomm'),
+    path('createresponse/<int:pk>/',
+         CreatePropertyResponseComment.as_view(), name='createcomm'),
+    path('propertycomments/<int:pk>/', GetPropertyCommentThreads.as_view(),
+         name='propertycomms'),
+    path('usercomments/<int:pk>/', GetUserCommentThreads.as_view(), name='usercomms')
 
 ]

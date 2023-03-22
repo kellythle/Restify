@@ -26,7 +26,7 @@ class AddProperty(APIView):
         if not owner.isHost:
             return Response({
                 "Error": "Must be a host to create properties"
-            })
+            }, status=403)
         data = request.data
         images = request.FILES.getlist('image')
         amenities = data['amenities'].split(',')

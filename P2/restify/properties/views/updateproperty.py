@@ -18,8 +18,8 @@ class EditProperty(UpdateAPIView):
         prop_owner = property.owner
         if request.user.id != prop_owner.id:
             return Response([{
-                'details': 'Permission denied'
-            }])
+                'Error': 'Permission denied.'
+            }], status=403)
         data = request.data
         amenities = data.get('amenities')
         if amenities:
@@ -38,13 +38,13 @@ class EditPropertyImages(UpdateAPIView):
         property = get_object_or_404(Property, id=pk)
         owner = property.owner
         if request.user != owner:
-            return Response({
-                "Error": "Incorrect credentials"
-            })
+            return Response([{
+                "Error": "Incorrect credentials."
+            }], status=401)
         if not property:
             return Response([{
                 'details': 'Property either doesn\'t exist or doesn\'t belong to you'
-            }])
+            }], status=403)
         images = request.FILES.getlist('image')
         PropertyImages.objects.all().filter(property=property).delete()
         for i in images:
