@@ -45,10 +45,13 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch("/accounts/register/", {
+      const response = await fetch("http://127.0.0.1:8000/accounts/register/", {
         method: "POST",
         body: data,
       });
+
+      console.log("Response:", response);
+      console.log("data:", data);
 
       if (response.ok) {
         alert("Account created successfully!");
@@ -59,6 +62,7 @@ const SignUp = () => {
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred. Please try again.");
+      alert(error);
     }
   };
 

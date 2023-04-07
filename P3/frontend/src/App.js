@@ -1,18 +1,26 @@
 import React from 'react';
-import './App.css';
-import Properties from './components/Properties';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import NavBar from './components/NavBar';
+import Login from './components/Login';
+import Signup from './components/SignUp';
+import Profile from './components/EditProfile';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Frontend for Restify</h1>
-      </header>
-      <div className="App-content">
-        <Properties />
+    <Router>
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          {/* Add other routes as needed */}
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;
