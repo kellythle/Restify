@@ -54,7 +54,7 @@ const EditProfile = ({ token }) => {
     setLoading(true);
   
     try {
-      const response = await fetch('/accounts/profile/', {
+      const response = await fetch('http://127.0.0.1:8000/accounts/profile/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
