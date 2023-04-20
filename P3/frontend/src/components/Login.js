@@ -22,7 +22,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await fetch("/accounts/login/", {
+      const response = await fetch("http://localhost:8000/accounts/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const Login = () => {
       const data = await response.json();
       localStorage.setItem("access", data.access);
       localStorage.setItem("refresh", data.refresh);
-      navigate.push("/"); // Redirect to the main page or dashboard
+      navigate("/"); // Redirect to the main page or dashboard
     } catch (error) {
       setError(error.message);
     }

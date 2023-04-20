@@ -37,24 +37,91 @@ const EditProfile = ({ token }) => {
 
   const handleProfileUpdate = (e) => {
     e.preventDefault();
-    // Add your logic to handle profile update
+    updateUserProfile(formData);
   };
 
-  const handleChangePassword = (e) => {
+  const handleChangePassword = async (e) => {
     e.preventDefault();
-    // Add your logic to handle password change
-  };
+
+    if (formData.new_password !== formData.confirm_new_password) {
+      alert("New passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/accounts/change_password/", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+        body: JSON.stringify({
+          current_password: formData.current_password,
+          new_password: formData.new_password,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Error changing password");
+      }
+
+      alert("Password changed successfully!");
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        current_password: "",
+        new_password: "",
+        confirm_new_password: "",
+      }));
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Error changing password");
+    }
+};
+
 
   useEffect(() => {
     fetchUserData();
   }, []);
+
+const updateUserProfile = async (formData, token) => {
+    const url = "http://localhost:8000/accounts/profile/";
+  
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+      if (formData[key]) {
+        data.append(key, formData[key]);
+      }
+    });
+  
+    try {
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access')}`,
+        },
+        body: data,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error updating user profile");
+      }
+  
+      const updatedUser = await response.json();
+      setUser(updatedUser);
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   
 
   const fetchUserData = async () => {
     setLoading(true);
   
     try {
-      const response = await fetch('http://127.0.0.1:8000/accounts/profile/', {
+      const response = await fetch('http://localhost:8000/accounts/profile/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -70,11 +137,11 @@ const EditProfile = ({ token }) => {
       setUser(data);
       setFormData({
         ...formData,
-        changefirstname: data.first_name,
-        changelastname: data.last_name,
-        changeemail: data.email,
-        changephonenumber: data.phone_number,
-        changeusername: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone_number: data.phone_number,
+        username: data.username,
         // You can add more fields here if needed
       });
   
@@ -84,6 +151,7 @@ const EditProfile = ({ token }) => {
       setLoading(false);
     }
   };
+  
   
   
 
@@ -194,7 +262,7 @@ const EditProfile = ({ token }) => {
                 <span className="file-name">
                   {formData.avatar_file
                     ? formData.avatar_file.name
-                    : "Screen Shot 2023-01-30 at 15.54.25.png"}
+                    : "No file selected"}
                 </span>
               </label>
             </div>

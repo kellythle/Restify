@@ -9,6 +9,8 @@ import Profile from "./components/EditProfile";
 import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
 
+const accessToken = localStorage.getItem('access');
+
 const App = () => {
   return (
     <Router>
@@ -18,7 +20,7 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile token={accessToken} />} />
           <Route path="/properties" element={<Properties />} />
           <Route
             path="/properties/getproperty/:propID"

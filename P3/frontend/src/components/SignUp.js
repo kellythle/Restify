@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./../pages/SignUp/style.css";
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     first_name: "",
