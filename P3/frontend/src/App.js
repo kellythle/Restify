@@ -5,9 +5,12 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import Profile from "./components/EditProfile";
+import Notifications from "./components/Notifications";
 // import Properties from "./components/Properties";
 import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
+import HostsReservations from "./pages/HostsReservations";
+import GuestsReservations from "./pages/GuestsReservations";
 
 const accessToken = localStorage.getItem('access');
 
@@ -20,8 +23,11 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/notifications" element={<Notifications/>} />
           <Route path="/profile" element={<Profile token={accessToken} />} />
           <Route path="/properties" element={<Properties />} />
+          <Route path="/hostsreservations" element={<HostsReservations />} />
+          <Route path="/guestsreservations" element={<GuestsReservations />} />
           <Route
             path="/properties/getproperty/:propID"
             element={<PropertyDetail />}
