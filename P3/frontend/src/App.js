@@ -11,6 +11,7 @@ import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
 import HostsReservations from "./pages/HostsReservations";
 import GuestsReservations from "./pages/GuestsReservations";
+import ReservationRequest from "./pages/ReservationRequester";
 
 const accessToken = localStorage.getItem('access');
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/properties" element={<Properties />} />
           <Route path="/hostsreservations" element={<HostsReservations />} />
           <Route path="/guestsreservations" element={<GuestsReservations />} />
+          <Route path="/requestreservation" element={<ReservationRequest />} />
           <Route
             path="/properties/getproperty/:propID"
             element={<PropertyDetail />}
