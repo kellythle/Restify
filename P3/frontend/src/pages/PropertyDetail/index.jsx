@@ -15,6 +15,17 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         
     }, [property]);
 
+    function toggleCollapsible(item){
+        console.log(item.target)
+        item.target.classList.toggle("active");
+        var content = item.target.nextElementSibling;
+        if (content.style.display === "block") {
+        content.style.display = "none";
+        } else {
+        content.style.display = "block";
+        }
+    }
+
     async function getProperty(){
         try {
             const response = await fetch(api);
@@ -27,12 +38,13 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
             setProperty(data);
             let arr = data.images.map((image)=>(
                 {
-                    original: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-                    thumbnail: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
+                    // original: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
+                    // thumbnail: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
+                    original: image
                 }
                 ))
             setImages(arr)
-            console.log(arr)
+            // console.log(arr)
           } catch (error) {
             console.error("Error fetching property:", error);
           }
@@ -44,12 +56,13 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         className="column is-full"
         style={{display: "flex", flexDirection: "column", justifyContent: "centers"}}
         >
-            <Carousel>
-                {/* {property.images.map((image, index) => {
+            {/* <Carousel>
+                {property.images.map((image, index) => {
                     <Carousel.Item key={index} className="d-block w-100" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"/>
-                })} */}
+                })}
                 <Carousel.Item className="d-block w-100" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"/>
-            </Carousel>
+            </Carousel> */}
+            
             
             {/* <ImageGallery items={images}
                     // src="assets/picture/house.png"
@@ -62,15 +75,22 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         <div className="tile is-ancestor basetile box">
             <div className="tile is-parent">
             <div className="tile is-child">
-                <figure className="image is-4by3">
+                {/* <figure className="image is-4by3">
                 
-                </figure>
+                </figure> */}
+                <Carousel className='d-block w-100'>
+                    {images.map((image, index) => (
+                        <Carousel.Item key={index}>
+                            <img className="d-block w-100" src={image.original} alt={`Slide ${index}`} />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
             </div>
             </div>
             <div className="tile is-parent">
             <div className="tile is-child">
                 <p style={{padding: "1rem", fontSize: "larger"}}>
-                <b>{property.property_name}</b> <br />
+                {/* <b>{property.property_name}</b> <br /> */}
                 <b>${property.price_night}/night</b> <br />
                 <b>Contact:{property.owner}</b>
                 </p>
@@ -113,7 +133,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
             </div>
         </div>
         <div className="box">
-            <button type="button" className="collapsible">
+            <button type="button" className="collapsible" onClick={toggleCollapsible}>
             <b>Amenities</b>
             </button>
             <div className="ccontent">
