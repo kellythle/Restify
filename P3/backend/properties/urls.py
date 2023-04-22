@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import AddProperty, EditProperty, DeleteProperty, OrderSortProperties, EditPropertyImages, GetUserNotifications, \
+from .views import AddProperty, EditProperty, DeleteProperty, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
     CreateNotification, UpdateNotificationRead, ReadProperty, CreatePropertyComment, CreatePropertyResponseComment, \
     GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment
+
+from .views.searchproperties import SearchProperties
 
 app_name = 'properties'
 urlpatterns = [
@@ -13,7 +15,7 @@ urlpatterns = [
     path('deleteproperty/<int:pk>/',
          DeleteProperty.as_view(), name='deleteproperty'),
     path('getproperty/<int:pk>/', ReadProperty.as_view(), name='getproperty'),
-    path('all/', OrderSortProperties.as_view(), name='ordersort'),
+    path('search/', SearchProperties.as_view(), name='searchproperties'),
     path('createreservation/', CreateReservation.as_view(),
          name='createreservation'),
     path('deletereservation/<int:pk>/',
