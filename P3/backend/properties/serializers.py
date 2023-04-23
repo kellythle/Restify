@@ -50,8 +50,9 @@ class PropertyListSerializer(ModelSerializer):
                   ]
 
     def image_serializer(self, obj):
-        first_image = obj.property_images.all()[0].image_url
-        return first_image
+        first_image = obj.property_images.all()[0].image_url.split("/")[-1]
+        image = 'http://localhost:8000/media/' + first_image + '/'
+        return image
 
     def amenity_serializer(self, obj):
         amenities = []

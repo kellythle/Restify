@@ -26,6 +26,7 @@ const HostProperty = () => {
         }).then(response => response.json())
         .then(data => {
             setHostProperties(data.results);
+            console.log(data.results)
             if(data.next!==null){
                 setNext(data.next);
             }
