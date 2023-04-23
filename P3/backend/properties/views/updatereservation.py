@@ -85,7 +85,7 @@ class EditReservation(UpdateAPIView):
                     reservation, data=request.data, partial=True)
                 serializer.is_valid(raise_exception=True)
                 return Response(serializer.data)
-            elif reservation.status == 'peca' and editedstatus == 'appr':
+            elif reservation.status == 'peca' and editedstatus == 'canc':
                 Notifications.objects.create(
                     recipient=reservation.user,
                     recipient_is_host=True,
@@ -100,7 +100,7 @@ class EditReservation(UpdateAPIView):
                     reservation, data=request.data, partial=True)
                 serializer.is_valid(raise_exception=True)
                 return Response(serializer.data)
-            elif reservation.status == 'peca' and editedstatus == 'canc':
+            elif reservation.status == 'peca' and editedstatus == 'pend':
                 Notifications.objects.create(
                     recipient=reservation.user,
                     recipient_is_host=True,
