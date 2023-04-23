@@ -59,7 +59,7 @@ const NavBar = () => {
       {isLoggedIn ? (
         <>
           <div className="navbar-brand">
-            <a className="navbar-item" href="http://localhost:3000/properties">
+            <a className="navbar-item" href="http://localhost:3000/search">
               <img
                 src="http://localhost:8000/media/Restify-Logo.png"
                 width="112"
