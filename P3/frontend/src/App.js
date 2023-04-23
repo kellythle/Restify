@@ -28,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/login" element={<Logout />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile token={accessToken} />} />

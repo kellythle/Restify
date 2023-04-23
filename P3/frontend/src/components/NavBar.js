@@ -172,7 +172,7 @@ const NavBar = () => {
                         <hr className="navbar-divider"></hr>
                         <a
                           className="navbar-item"
-                          href="http://localhost:3000/login"
+                          href="http://localhost:3000/logout"
                           style={{
                             textDecoration: "none",
                           }}

@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
 
     setTimeout(() => {
-      navigate('/login');
+      navigate("/login");
     }, 1500); // 1.5 seconds delay before redirecting to the login page
   }, [navigate]);
 
