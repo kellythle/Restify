@@ -15,6 +15,7 @@ import ReservationRequest from "./pages/ReservationRequester";
 import CreateProperty from "./pages/CreateProperty";
 import EditProperty from "./pages/EditProperty";
 import PropertySearch from "./components/PropertySearch";
+import HostProperty from "./pages/HostProperties";
 
 const accessToken = localStorage.getItem("access");
 
@@ -49,6 +50,7 @@ const App = () => {
             path="properties/editproperty/:propID"
             element={<EditProperty />}
           />
+          <Route path="properties/hostproperties" element={<HostProperty />} />
 
           {/* Add other routes as needed */}
         </Routes>

@@ -3,13 +3,35 @@ import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isHost, setIsHost] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     // Check if the user is logged in by checking if the access token exists in the local storage
     const token = localStorage.getItem("access");
     setIsLoggedIn(!!token);
+    checkIsHost();
   }, [location]);
+
+  function checkIsHost() {
+    try {
+      fetch("http://localhost:8000/accounts/profile/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setIsHost(data.isHost);
+        });
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+      alert(error);
+    }
+  }
 
   return (
     // <nav>
@@ -85,17 +107,34 @@ const NavBar = () => {
                 My Reservations
               </a>
 
-              <a
-                className="navbar-item"
-                href="http://localhost:3000/hostsreservations"
-                style={{
-                  height: "7vh",
-                  textDecoration: "none",
-                }}
-              >
-                My Hostings
-              </a>
-
+              {isHost ? (
+                <a
+                  className="navbar-item"
+                  href="http://localhost:3000/hostsreservations"
+                  style={{
+                    height: "7vh",
+                    textDecoration: "none",
+                  }}
+                >
+                  My Hostings
+                </a>
+              ) : (
+                <></>
+              )}
+              {isHost ? (
+                <a
+                  className="navbar-item"
+                  href="http://localhost:3000/properties/hostproperties"
+                  style={{
+                    height: "7vh",
+                    textDecoration: "none",
+                  }}
+                >
+                  My Properties
+                </a>
+              ) : (
+                <></>
+              )}
               <div className="navbar-end">
                 <div className="navbar-item">
                   <div className="buttons">
