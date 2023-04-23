@@ -12,3 +12,4 @@ from .readoneproperty import ReadProperty
 from .viewcomment import GetPropertyCommentThreads, GetUserCommentThreads
 from .writecomment import CreatePropertyComment, CreatePropertyResponseComment, CreateUserComment
 from .isowner import IsOwner
+from .gethostproperties import GetHostProperties

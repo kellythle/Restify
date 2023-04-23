@@ -173,20 +173,6 @@ const CreateProperty = () => {
                         <div className="control pb-2">
                           <input onChange={handleChange} name="address" className="input" type="text" placeholder="Address" required/>
                         </div>
-                        {/* <div className="control pb-2">
-                          <input className="input" type="text" placeholder="Apartment, suite, etc. (optional)"/>
-                        </div>
-                        <div className="columns is-variable is-1 ">
-                          <div className="column is-one-third">
-                            <input className="input" type="text" placeholder="City" required/>
-                          </div>
-                          <div className="column auto">
-                            <input className="input" type="text" placeholder="Province" required/>
-                          </div>
-                          <div className="column auto">
-                            <input className="input" type="text" placeholder="Postal Code" required/>
-                          </div>
-                        </div> */}
                       </div>
 
                       <div className="field pt-4">
