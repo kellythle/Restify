@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from datetime import datetime, date
 from accounts.models import CustomUser
-from properties.models import Reservation, Notifications, Property
+from properties.models import Reservation, Notifications, Property, PropertyImages
 from properties.serializers import ReservationSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -15,6 +15,9 @@ class CreateReservation(APIView):
         user = get_object_or_404(CustomUser, pk=request.user.id)
         property = get_object_or_404(
             Property, pk=request.data.get('property'))
+        name = property.property_name
+        images = PropertyImages.objects.all().filter(property=property)
+        image = images[0]
         start_date = datetime.strptime(
             self.request.data.get('start_date'), '%Y-%m-%d').date()
         end_date = datetime.strptime(
@@ -38,6 +41,8 @@ class CreateReservation(APIView):
                         'Error': 'There has already been a reservation made for you within these dates.'}], status=400)
             new_reserv = Reservation.objects.create(
                 user=user,
+                name=name,
+                image=image,
                 property=property,
                 start_date=start_date,
                 end_date=end_date,

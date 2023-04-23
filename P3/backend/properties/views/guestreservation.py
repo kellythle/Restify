@@ -1,3 +1,4 @@
+from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 from datetime import date
 from accounts.models import CustomUser
@@ -7,9 +8,16 @@ from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
 class GuestReservation(ListAPIView):
     serializer_class = ReservationSerializer
-    pagination_class = PageNumberPagination
+    pagination_class = StandardResultsSetPagination
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = get_object_or_404(CustomUser, pk=self.request.user.id)

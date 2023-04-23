@@ -11,3 +11,4 @@ from .updatereservation import EditReservation
 from .readoneproperty import ReadProperty
 from .viewcomment import GetPropertyCommentThreads, GetUserCommentThreads
 from .writecomment import CreatePropertyComment, CreatePropertyResponseComment, CreateUserComment
+from .isowner import IsOwner

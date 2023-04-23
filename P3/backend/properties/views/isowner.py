@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 
 
-class isOwner(APIView):
+class IsOwner(APIView):
 
     def get(self, request, pk):
         property = get_object_or_404(Property, id=pk)

@@ -67,6 +67,8 @@ class Reservation(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reservations')
     property = models.ForeignKey(
         Property, on_delete=models.CASCADE, related_name='reservations')
+    name = models.CharField(max_length=500, null=False)
+    image = models.ImageField(null=False)
     start_date = models.DateField()
     end_date = models.DateField()
     message = models.CharField(max_length=500)
