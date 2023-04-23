@@ -27,6 +27,7 @@ const EditProperty = () => {
             });
     };
     const [size, setSize] = useState({});
+    const [img, setImg] = useState('')
     const [formData, setFormData] = useState({
         owner: -1,
         property_name: "",
@@ -38,7 +39,7 @@ const EditProperty = () => {
         price_night: "",
         description: "",
         amenities: [],
-        //images: [{}]
+        image: []
     })
     useEffect(() => {
         setIsLoggedIn(!!localStorage.getItem('access'))
@@ -77,9 +78,10 @@ const EditProperty = () => {
               },
         }).then(response => response.json()
         ).then(data => {
+          setImg(data.images[0])
             setFormData({
                 ...formData,
-                owner: formData.owner,
+                owner: data.owner,
                 property_name: data.property_name,
                 address: data.address,
                 group_size: data.group_size,
@@ -89,7 +91,7 @@ const EditProperty = () => {
                 price_night: data.price_night,
                 description: data.description,
                 amenities: data.amenities,
-                //images: data.images,
+                image: data.images,
             });
         });
     }
@@ -136,17 +138,21 @@ const EditProperty = () => {
       };
 
       const handleImageChange = (e) => {
-
-        // setFormData((prevFormData) => ({
-        //     ...prevFormData,
-        //     images: e.target.files
-        // }))
+        if (e.target.files.length > 0){
+          const fileName = document.querySelector('.file-name');
+          fileName.textContent = e.target.files[0].name;
+        }
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            image: e.target.files
+        }))
       };
 
       const handleSubmit = async (e) => {
         e.preventDefault();
     
         const data = new FormData();
+        const imgData = new FormData();
         let tempData = {...formData};
         for (const key in tempData) {
           if (tempData.hasOwnProperty(key) && tempData[key]) {
@@ -156,6 +162,10 @@ const EditProperty = () => {
                 obj.push(amenityDict[propName]);
               };
               data.append(key, obj);
+            }else if(key == 'image'){
+              for(let item of tempData[key]){
+                imgData.append(key, item)
+              }
             }
             else{
             data.append(key, formData[key]);
@@ -176,8 +186,17 @@ const EditProperty = () => {
           console.log("data:", data);
     
           if (response.ok) {
-            alert("Property edited successfully!");
-            navigate("/properties/");
+            fetch(`http://localhost:8000/properties/editingpropertyimages/${propID.propID}/`, {
+              method: "PATCH",
+              headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access')}`,
+              },
+              body: imgData,
+            }).then(response => {
+              alert("Property edited successfully!");
+              navigate(`/properties/getproperty/${propID.propID}`);
+            })
+            
           } else {
             const errorData = await response.json();
             alert(JSON.stringify(errorData) + 'here');
@@ -443,13 +462,16 @@ const EditProperty = () => {
                                   Upload image(s)
                                 </span>
                               </span>
-
+                              <span class="file-name">
+                                  {/* {formData.image[0]} */}
+                                  {img}
+                              </span>
                             </label>
                           </div>
                         </div>
                       </div>
 
-                      <div className="field pt-4">
+                      {/* <div className="field pt-4">
                         <label className="label">Availability</label>
                         <div className="columns">
                           <div className="control column is-one-quarter">
@@ -461,7 +483,7 @@ const EditProperty = () => {
                             <input type="date" value="2025-02-10" />
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="field pt-4">
                         <label className="label">Price Per Night</label>

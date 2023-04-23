@@ -109,9 +109,9 @@ const CreateProperty = () => {
         }))
       };
 
-      useEffect(()=>{
-        console.log(formData.image);
-      }, [formData.image])
+      // useEffect(()=>{
+      //   console.log(formData.image);
+      // }, [formData.image])
 
       const handleSubmit = async (e) => {
         e.preventDefault();

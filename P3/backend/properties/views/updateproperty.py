@@ -51,6 +51,7 @@ class EditPropertyImages(UpdateAPIView):
             }], status=403)
         images = request.FILES.getlist('image')
         PropertyImages.objects.all().filter(property=property).delete()
+        print(images)
         for i in images:
             img = PropertyImages.objects.create(
                 property=property, image=i)

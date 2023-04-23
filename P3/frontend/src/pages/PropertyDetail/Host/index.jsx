@@ -16,7 +16,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
     
     useEffect(()=>{
         getProperty();
-        console.log(email)
+        // console.log(email)
     }, []);
 
 
@@ -70,6 +70,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
                 }
                 ))
             setImages(arr)
+            console.log(arr)
           } catch (error) {
             console.error("Error fetching property:", error);
           }
@@ -114,8 +115,8 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
             >
                 <h1 style={{textAlign: "center", fontSize: "large"}}>As the owner of this property, you can:</h1>
                     <a className="button propertydetails is-link is-rounded" href="hostreservations.html">View Requests and History</a>
-                    <Link className="button propertydetails is-link is-rounded" to={`/properties/editproperty/${propID}`}>Edit Property</Link>
-                    <button className="js-modal-trigger button propertydetails is-link is-rounded" onClick={toggleDelete}>Delete Property</button>
+                    <Link style={{padding:"0.5rem"}}className="button propertydetails is-link is-rounded" to={`/properties/editproperty/${propID}`}>Edit Property</Link>
+                    <a className="js-modal-trigger button propertydetails is-link is-rounded" onClick={toggleDelete}>Delete Property</a>
                     <a className="button propertydetails is-link is-rounded" href="reservationdescription.html">View Property Comments</a>
 
                 <h1 style={{textAlign: "center", fontSize: "large"}}>Status: Open for Requests</h1>
