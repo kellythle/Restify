@@ -87,7 +87,7 @@ const NavBar = () => {
             >
               <a
                 className="navbar-item"
-                href="http://localhost:3000/properties"
+                href="http://localhost:3000/search"
                 style={{
                   height: "7vh",
                   textDecoration: "none",
