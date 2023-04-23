@@ -24,6 +24,43 @@ class PropertyImageSerializer(ModelSerializer):
         return request.build_absolute_uri(obj.image.url)
 
 
+class PropertyListSerializer(ModelSerializer):
+    # images = SerializerMethodField('image_serializer')
+    image = SerializerMethodField('image_serializer')
+    amenities = SerializerMethodField('amenity_serializer')
+
+    # def image_serializer(self):
+    #     images = PropertyImages.objects.filter(owner=self.id)
+    #     return PropertyImageSerializer(images).data
+
+    class Meta:
+        model = Property
+        fields = ['id',
+                  'owner',
+                  "property_name",
+                  'address',
+                  'group_size',
+                  'number_of_beds',
+                  'number_of_baths',
+                  'date_created',
+                  'price_night',
+                  'amenities',
+                  'description',
+                  'image',
+                  ]
+
+    def image_serializer(self, obj):
+        first_image = obj.property_images.all()[0].image_url
+        return first_image
+
+    def amenity_serializer(self, obj):
+        amenities = []
+        numbers = obj.amenities.all()
+        for amenity in numbers:
+            amenities.append(Amenities.objects.get(id=amenity.id).amenity)
+        return amenities
+
+
 class PropertySerializer(ModelSerializer):
     # images = SerializerMethodField('image_serializer')
     images = PropertyImageSerializer(many=True, read_only=True)

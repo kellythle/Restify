@@ -28,7 +28,7 @@ const CreateProperty = () => {
         price_night: "",
         description: "",
         amenities: [],
-        images: [{}]
+        image: []
     })
 
     useEffect(() => {
@@ -99,11 +99,19 @@ const CreateProperty = () => {
     };
 
       const handleImageChange = (e) => {
+        if (e.target.files.length > 0){
+          const fileName = document.querySelector('.file-name');
+          fileName.textContent = e.target.files[0].name;
+        }
         setFormData((prevFormData) => ({
             ...prevFormData,
-            images: e.target.files
+            image: e.target.files
         }))
       };
+
+      useEffect(()=>{
+        console.log(formData.image);
+      }, [formData.image])
 
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -120,6 +128,10 @@ const CreateProperty = () => {
             }else if (key == 'date_created'){
               const date = new Date().toJSON();
               data.append(key, date);
+            }else if(key == 'image'){
+              for(let item of tempData[key]){
+                data.append(key, item)
+              }
             }
             else{
             data.append(key, formData[key]);
@@ -332,7 +344,7 @@ const CreateProperty = () => {
                         <div className="control">
                           <div className="file">
                             <label className="file-label">
-                              <input onChange={handleImageChange} className="file-input" type="file" multiple="multiple" required/>
+                              <input name="image-input" onChange={handleImageChange} className="file-input" type="file" multiple required/>
                               <span className="file-cta">
                                 <span className="file-icon">
                                   <i className="fa fa-upload" style={{fontSize:"20px"}}></i>
@@ -341,12 +353,15 @@ const CreateProperty = () => {
                                   Upload image(s)
                                 </span>
                               </span>
+                              <span class="file-name">
+                                  No file uploaded
+                              </span>
                             </label>
                           </div>
                         </div>
                       </div>
 
-                      <div className="field pt-4">
+                      {/* <div className="field pt-4">
                         <label className="label">Availability</label>
                         <div className="columns">
                           <div className="control column is-one-quarter">
@@ -358,7 +373,7 @@ const CreateProperty = () => {
                             <input type="date" value="2025-02-10" />
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="field pt-4">
                         <label className="label">Price Per Night</label>

@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-from properties.serializers import PropertySerializer
+from properties.serializers import PropertyListSerializer
 
 
 class StandardResultsSetPagination(PageNumberPagination):
@@ -18,12 +18,16 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class GetHostProperties(ListAPIView):
-    serializer_class = PropertySerializer
+    serializer_class = PropertyListSerializer
     pagination_class = StandardResultsSetPagination
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         # all_properties = Property.objects.all().filter(owner=self.request.user)
+        # resp = Response(PropertySerializer(all_properties))
+        # for prop in all_properties:
+
+        #     print(prop.property_images.all()[0])
         # images = PropertyImages.objects.all().filter(property=ob)
         # ob = Response(PropertySerializer(ob).data)
         return Property.objects.all().filter(owner=self.request.user)

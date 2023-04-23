@@ -7,7 +7,7 @@ from accounts.models import CustomUser
 from properties.forms import AddPropertyForm, EditPropertyForm, PropertyImageForm
 from properties.models import Property, PropertyImages, Amenities
 from properties.serializers import PropertySerializer
-from datetime import datetime
+import datetime
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView  # APIView
 from rest_framework.views import APIView
@@ -30,11 +30,13 @@ class AddProperty(APIView):
         data = request.data
         images = request.FILES.getlist('image')
         amenities = data['amenities'].split(',')
+        print('here')
         new_property = Property.objects.create(owner=owner, property_name=data['property_name'],
                                                address=data['address'], group_size=data['group_size'],
                                                number_of_beds=data['number_of_beds'], number_of_baths=data["number_of_baths"],
-                                               date_created=data['date_created'], price_night=data["price_night"],
+                                               date_created=data.get('date_created', datetime.date.today()), price_night=data["price_night"],
                                                description=data['description'])
+        print(request.data.getlist('image'))
         for amenity in amenities:
             if not Amenities.objects.filter(id=amenity).exists():
                 return Response({
@@ -46,5 +48,6 @@ class AddProperty(APIView):
                 property=new_property, image=i)
             img.image_url = img.image.path
             img.save()
+
         serialized = PropertySerializer(new_property).data
         return Response(serialized)
