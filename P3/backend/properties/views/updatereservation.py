@@ -55,7 +55,37 @@ class EditReservation(UpdateAPIView):
                     reservation, data=request.data, partial=True)
                 serializer.is_valid(raise_exception=True)
                 return Response(serializer.data)
-            elif reservation.status == 'peca' and editedstatus == 'canc':
+            elif reservation.status == 'pend' and editedstatus == 'deni':
+                Notifications.objects.create(
+                    recipient=reservation.user,
+                    recipient_is_host=True,
+                    reservation=reservation,
+                    notification_type=3,
+                    notification=f"Your reservation for {reservation.property.property_name} from {reservation.start_date} to {reservation.end_date} has been declined."
+                )
+                status = 'deni'
+                reservation.status = status
+                reservation.save()
+                serializer = ReservationSerializer(
+                    reservation, data=request.data, partial=True)
+                serializer.is_valid(raise_exception=True)
+                return Response(serializer.data)
+            elif reservation.status == 'appr' and editedstatus == 'term':
+                Notifications.objects.create(
+                    recipient=reservation.user,
+                    recipient_is_host=True,
+                    reservation=reservation,
+                    notification_type=3,
+                    notification=f"Your reservation for {reservation.property.property_name} from {reservation.start_date} to {reservation.end_date} has been terminated."
+                )
+                status = 'term'
+                reservation.status = status
+                reservation.save()
+                serializer = ReservationSerializer(
+                    reservation, data=request.data, partial=True)
+                serializer.is_valid(raise_exception=True)
+                return Response(serializer.data)
+            elif reservation.status == 'peca' and editedstatus == 'appr':
                 Notifications.objects.create(
                     recipient=reservation.user,
                     recipient_is_host=True,
@@ -64,6 +94,21 @@ class EditReservation(UpdateAPIView):
                     notification=f"Your cancellation request for {reservation.property.property_name} from {reservation.start_date} to {reservation.end_date} has been approved."
                 )
                 status = 'canc'
+                reservation.status = status
+                reservation.save()
+                serializer = ReservationSerializer(
+                    reservation, data=request.data, partial=True)
+                serializer.is_valid(raise_exception=True)
+                return Response(serializer.data)
+            elif reservation.status == 'peca' and editedstatus == 'canc':
+                Notifications.objects.create(
+                    recipient=reservation.user,
+                    recipient_is_host=True,
+                    reservation=reservation,
+                    notification_type=4,
+                    notification=f"Your cancellation request for {reservation.property.property_name} from {reservation.start_date} to {reservation.end_date} has been denied."
+                )
+                status = 'pend'
                 reservation.status = status
                 reservation.save()
                 serializer = ReservationSerializer(

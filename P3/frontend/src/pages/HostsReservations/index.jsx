@@ -153,7 +153,22 @@ const HostsReservations = () => {
                                         <th>Check-out Date</th>
                                         <th>Guest Details</th>
                                         <th>Guest Message</th>
-                                        <th>Reservation Status</th>
+                                        <th>
+                                            Reservation Status
+                                            <button
+                                                class="button is-small is-rounded"
+                                                style={{ marginLeft: "1vw" }}
+                                                onClick={() =>
+                                                    alert(
+                                                        "Reservation Status Information\nPending -> Approve: approves a guest's request to rent your property.\nPending -> Deny: denies a guest's request to rent your property.\nApproved -> Terminate: terminates a guest's currently approved stay at your property.\nCompleted -> Add Comment: you are able to comment on the guest regarding their stay.\nPending Cancellation -> Approve: approves a guest's request to cancel their stay at your property.\nCancellation -> Deny: denies a guest's request to cancel their stay at your property."
+                                                    )
+                                                }
+                                            >
+                                                <span class="icon">
+                                                    <img src="http://localhost:8000/media/info-icon.png" />
+                                                </span>
+                                            </button>
+                                        </th>
                                     </tr>
                                 </thead>
                                 {reservations?.map((reservation) => {
@@ -177,7 +192,7 @@ const HostsReservations = () => {
                                                             "/"
                                                         }
                                                     >
-                                                        <h5 className="title is-5">
+                                                        <h5 className="title is-6">
                                                             {reservation.name}
                                                         </h5>
                                                     </a>
@@ -235,7 +250,9 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/1/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -260,7 +277,9 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/2/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -326,7 +345,9 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/8/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -421,7 +442,9 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/3/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -446,7 +469,9 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {

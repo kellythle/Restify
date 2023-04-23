@@ -149,7 +149,22 @@ const GuestsReservations = () => {
                                         <th>Name</th>
                                         <th>Check-in Date</th>
                                         <th>Check-out Date</th>
-                                        <th>Reservation Status</th>
+                                        <th>
+                                            Reservation Status
+                                            <button
+                                                class="button is-small is-rounded"
+                                                style={{ marginLeft: "1vw" }}
+                                                onClick={() =>
+                                                    alert(
+                                                        "Reservation Status Information\nApproved -> Cancel: sends the host a request to cancel your stay.\nCompleted -> Add Comment: write how your stay was at this property."
+                                                    )
+                                                }
+                                            >
+                                                <span class="icon">
+                                                    <img src="http://localhost:8000/media/info-icon.png" />
+                                                </span>
+                                            </button>
+                                        </th>
                                     </tr>
                                 </thead>
                                 {reservations?.map((reservation) => {
@@ -196,51 +211,12 @@ const GuestsReservations = () => {
                                                             ) {
                                                                 case "pend":
                                                                     return (
-                                                                        <div class="dropdown is-hoverable">
-                                                                            <div class="dropdown-trigger">
-                                                                                <button
-                                                                                    class="button is-rounded is-warning"
-                                                                                    aria-haspopup="true"
-                                                                                    aria-controls="dropdown-menu"
-                                                                                >
-                                                                                    <span>
-                                                                                        Pending
-                                                                                    </span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div
-                                                                                class="dropdown-menu"
-                                                                                id="dropdown-menu"
-                                                                                role="menu"
-                                                                            >
-                                                                                <div class="dropdown-content">
-                                                                                    <button
-                                                                                        class="dropdown-item"
-                                                                                        onClick={() => {
-                                                                                            fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/10/",
-                                                                                                {
-                                                                                                    headers:
-                                                                                                        {
-                                                                                                            Authorization: `Bearer ${token}`,
-                                                                                                            "Content-Type":
-                                                                                                                "application/json",
-                                                                                                        },
-                                                                                                    method: "PATCH",
-                                                                                                    body: JSON.stringify(
-                                                                                                        {
-                                                                                                            status: "peca",
-                                                                                                        }
-                                                                                                    ),
-                                                                                                }
-                                                                                            );
-                                                                                        }}
-                                                                                    >
-                                                                                        Cancel
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <button
+                                                                            class="button is-rounded is-warning"
+                                                                            disabled
+                                                                        >
+                                                                            Pending
+                                                                        </button>
                                                                     );
                                                                 case "deni":
                                                                     return (
@@ -284,7 +260,9 @@ const GuestsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/11/",
+                                                                                                "http://localhost:8000/properties/editreservation/" +
+                                                                                                    reservation.id +
+                                                                                                    "/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {

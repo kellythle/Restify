@@ -17,7 +17,7 @@ class CreateReservation(APIView):
             Property, pk=request.data.get('property'))
         name = property.property_name
         images = PropertyImages.objects.all().filter(property=property)
-        image = images[0]
+        image = images[0].image
         start_date = datetime.strptime(
             self.request.data.get('start_date'), '%Y-%m-%d').date()
         end_date = datetime.strptime(
