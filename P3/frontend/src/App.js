@@ -16,6 +16,7 @@ import CreateProperty from "./pages/CreateProperty";
 import EditProperty from "./pages/EditProperty";
 import PropertySearch from "./components/PropertySearch";
 import HostProperty from "./pages/HostProperties";
+import Logout from "./components/LogOut";
 
 const accessToken = localStorage.getItem("access");
 
@@ -27,6 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile token={accessToken} />} />

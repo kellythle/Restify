@@ -16,7 +16,8 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
 
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -140,6 +141,15 @@ const SignUp = () => {
             value={formData.confirm_password}
             onChange={handleChange}
             required
+          />
+        </label>
+        <label>
+          Are you a host?
+          <input
+            type="checkbox"
+            name="isHost"
+            checked={formData.isHost}
+            onChange={handleChange}
           />
         </label>
         <label>

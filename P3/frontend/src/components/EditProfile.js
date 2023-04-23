@@ -162,6 +162,24 @@ const updateUserProfile = async (formData, token) => {
       {loading ? (
         <div>Loading...</div>
       ) : (
+        
+        <div>
+            {/* Display the user's avatar */}
+            {user.avatar && (
+              <div>
+                <img
+                  src={user.avatar}
+                  alt={`${user.first_name} ${user.last_name}`}
+                  style={{ width: '200px', borderRadius: '50%' }}
+                />
+              </div>
+            )}
+
+            {/* Display the user's host status */}
+            <div>
+              <p>{user.is_host ? 'You are a host.' : 'You are not a host.'}</p>
+            </div>
+          
         <div className="columns">
         <div className="column is-5">
           <form onSubmit={handleProfileUpdate}>
@@ -324,6 +342,7 @@ const updateUserProfile = async (formData, token) => {
             </div>
           </form>
         </div>
+      </div>
       </div>
         )}
     </div>
