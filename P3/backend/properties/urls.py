@@ -2,7 +2,7 @@ from django.urls import path
 from .views import AddProperty, EditProperty, DeleteProperty, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
     CreateNotification, UpdateNotificationRead, ReadProperty, CreatePropertyComment, CreatePropertyResponseComment, \
-    GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment, isOwner
+    GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment, IsOwner
 
 from .views.searchproperties import SearchProperties
 
@@ -44,6 +44,6 @@ urlpatterns = [
          GetUserCommentThreads.as_view(), name='usercomms'),
     path('createusercomment/<int:pk>/',
          CreateUserComment.as_view(), name='newusercomment'),
-    path('isOwner/<int:pk>/', isOwner.as_view(), name='isowner')
+    path('IsOwner/<int:pk>/', IsOwner.as_view(), name='isowner')
 
 ]
