@@ -12,8 +12,10 @@ import PropertyDetail from "./pages/PropertyDetail";
 import HostsReservations from "./pages/HostsReservations";
 import GuestsReservations from "./pages/GuestsReservations";
 import ReservationRequest from "./pages/ReservationRequester";
+import CreateProperty from "./pages/CreateProperty";
+import EditProperty from "./pages/EditProperty";
 
-const accessToken = localStorage.getItem('access');
+const accessToken = localStorage.getItem("access");
 
 const App = () => {
   return (
@@ -24,15 +26,26 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/notifications" element={<Notifications/>} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile token={accessToken} />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/hostsreservations" element={<HostsReservations />} />
           <Route path="/guestsreservations" element={<GuestsReservations />} />
-          <Route path="/requestreservation" element={<ReservationRequest />} />
+          <Route
+            path="/requestreservation/:propID"
+            element={<ReservationRequest />}
+          />
           <Route
             path="/properties/getproperty/:propID"
             element={<PropertyDetail />}
+          />
+          <Route
+            path="properties/createproperty"
+            element={<CreateProperty />}
+          />
+          <Route
+            path="properties/editproperty/:propID"
+            element={<EditProperty />}
           />
 
           {/* Add other routes as needed */}

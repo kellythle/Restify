@@ -2,7 +2,7 @@ from django.urls import path
 from .views import AddProperty, EditProperty, DeleteProperty, OrderSortProperties, EditPropertyImages, GetUserNotifications, \
     CreateReservation, EditReservation, DeleteReservation, HostReservation, GuestReservation, DeleteUserNotification, \
     CreateNotification, UpdateNotificationRead, ReadProperty, CreatePropertyComment, CreatePropertyResponseComment, \
-    GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment
+    GetPropertyCommentThreads, GetUserCommentThreads, CreateUserComment, isOwner
 
 app_name = 'properties'
 urlpatterns = [
@@ -38,7 +38,10 @@ urlpatterns = [
          CreatePropertyResponseComment.as_view(), name='createcomm'),
     path('propertycomments/<int:pk>/', GetPropertyCommentThreads.as_view(),
          name='propertycomms'),
-    path('usercomments/<int:pk>/', GetUserCommentThreads.as_view(), name='usercomms'),
-    path('createusercomment/<int:pk>/', CreateUserComment.as_view(), name='newusercomment')
+    path('usercomments/<int:pk>/',
+         GetUserCommentThreads.as_view(), name='usercomms'),
+    path('createusercomment/<int:pk>/',
+         CreateUserComment.as_view(), name='newusercomment'),
+    path('isOwner/<int:pk>/', isOwner.as_view(), name='isowner')
 
 ]
