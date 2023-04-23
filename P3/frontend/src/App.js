@@ -14,6 +14,7 @@ import GuestsReservations from "./pages/GuestsReservations";
 import ReservationRequest from "./pages/ReservationRequester";
 import CreateProperty from "./pages/CreateProperty";
 import EditProperty from "./pages/EditProperty";
+import PropertySearch from "./components/PropertySearch";
 
 const accessToken = localStorage.getItem("access");
 
@@ -35,6 +36,7 @@ const App = () => {
             path="/requestreservation/:propID"
             element={<ReservationRequest />}
           />
+          <Route path="/search" element={<PropertySearch />} />
           <Route
             path="/properties/getproperty/:propID"
             element={<PropertyDetail />}
