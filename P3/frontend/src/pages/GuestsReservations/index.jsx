@@ -218,7 +218,7 @@ const GuestsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/10/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -265,7 +265,7 @@ const GuestsReservations = () => {
                                                                         <div class="dropdown is-hoverable">
                                                                             <div class="dropdown-trigger">
                                                                                 <button
-                                                                                    class="button is-rounded is-warning"
+                                                                                    class="button is-rounded is-primary"
                                                                                     aria-haspopup="true"
                                                                                     aria-controls="dropdown-menu"
                                                                                 >
@@ -284,7 +284,7 @@ const GuestsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/11/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {

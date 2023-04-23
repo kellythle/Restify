@@ -235,7 +235,7 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/1/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -260,7 +260,7 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/2/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {
@@ -304,12 +304,51 @@ const HostsReservations = () => {
                                                                     );
                                                                 case "appr":
                                                                     return (
-                                                                        <button
-                                                                            class="button is-rounded is-primary"
-                                                                            disabled
-                                                                        >
-                                                                            Approved
-                                                                        </button>
+                                                                        <div class="dropdown is-hoverable">
+                                                                            <div class="dropdown-trigger">
+                                                                                <button
+                                                                                    class="button is-rounded is-primary"
+                                                                                    aria-haspopup="true"
+                                                                                    aria-controls="dropdown-menu"
+                                                                                >
+                                                                                    <span>
+                                                                                        Approved
+                                                                                    </span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div
+                                                                                class="dropdown-menu"
+                                                                                id="dropdown-menu"
+                                                                                role="menu"
+                                                                            >
+                                                                                <div class="dropdown-content">
+                                                                                    <button
+                                                                                        class="dropdown-item"
+                                                                                        onClick={() => {
+                                                                                            fetch(
+                                                                                                "http://localhost:8000/properties/editreservation/8/",
+                                                                                                {
+                                                                                                    headers:
+                                                                                                        {
+                                                                                                            Authorization: `Bearer ${token}`,
+                                                                                                            "Content-Type":
+                                                                                                                "application/json",
+                                                                                                        },
+                                                                                                    method: "PATCH",
+                                                                                                    body: JSON.stringify(
+                                                                                                        {
+                                                                                                            status: "term",
+                                                                                                        }
+                                                                                                    ),
+                                                                                                }
+                                                                                            );
+                                                                                        }}
+                                                                                    >
+                                                                                        Terminate
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     );
                                                                 case "canc":
                                                                     return (
@@ -382,7 +421,7 @@ const HostsReservations = () => {
                                                                                         class="dropdown-item"
                                                                                         onClick={() => {
                                                                                             fetch(
-                                                                                                "http://localhost:8000/properties/editreservation/7/",
+                                                                                                "http://localhost:8000/properties/editreservation/3/",
                                                                                                 {
                                                                                                     headers:
                                                                                                         {

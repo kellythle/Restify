@@ -104,7 +104,7 @@ const NavBar = () => {
                                     <div class="buttons">
                                         <a
                                             class="navbar-item"
-                                            href="notifications"
+                                            href="http://localhost:3000/notifications"
                                             style={{
                                                 textDecoration: "none",
                                             }}

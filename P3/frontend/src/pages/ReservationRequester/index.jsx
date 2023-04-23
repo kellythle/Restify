@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function ReservationRequest(propID) {
+let token = localStorage.getItem("access");
+
+function ReservationRequest() {
     const [property, setProperty] = useState(null);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -19,7 +21,7 @@ function ReservationRequest(propID) {
             setDays(diffDays);
             setDaysPrice(diffDays * price);
             setTaxes(daysPrice * 0.13);
-            setTotalPrice(daysPrice);
+            setTotalPrice(daysPrice + tax);
         }
     }, [startDate, endDate, price]);
 
@@ -30,7 +32,7 @@ function ReservationRequest(propID) {
     async function fetchProperty() {
         try {
             const response = await fetch(
-                "http://localhost:8000/properties/getproperty/1/"
+                "http://localhost:8000/properties/getproperty/11/"
             );
             console.log("API response: ", response);
             const data = await response.json();
@@ -59,13 +61,20 @@ function ReservationRequest(propID) {
                                 <div className="field">
                                     <label className="label">Dates</label>
                                     <div className="columns is-variable is-1">
-                                        <div className="control column is-one-quarter">
+                                        <div
+                                            className="control column is-one-quarter"
+                                            style={{ marginRight: "1vw" }}
+                                        >
                                             <label className="label has-text-weight-semibold">
                                                 Start Date
                                             </label>
                                             <input
                                                 type="date"
-                                                value="2023-02-18"
+                                                onChange={(event) =>
+                                                    setStartDate(
+                                                        event.target.value
+                                                    )
+                                                }
                                             />
                                         </div>
                                         <div className="control column auto">
@@ -74,7 +83,11 @@ function ReservationRequest(propID) {
                                             </label>
                                             <input
                                                 type="date"
-                                                value="2023-02-24"
+                                                onChange={(event) =>
+                                                    setEndDate(
+                                                        event.target.value
+                                                    )
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -781,7 +794,28 @@ function ReservationRequest(propID) {
 
                                 <div className="field is-grouped">
                                     <div className="control">
-                                        <button className="button is-link">
+                                        <button
+                                            className="button is-link"
+                                            onClick={() => {
+                                                fetch(
+                                                    "http://localhost:8000/properties/createreservation/",
+                                                    {
+                                                        headers: {
+                                                            Authorization: `Bearer ${token}`,
+                                                            "Content-Type":
+                                                                "application/json",
+                                                        },
+                                                        method: "POST",
+                                                        body: JSON.stringify({
+                                                            property: 11,
+                                                            start_date:
+                                                                startDate,
+                                                            end_date: endDate,
+                                                        }),
+                                                    }
+                                                );
+                                            }}
+                                        >
                                             Request to Book
                                         </button>
                                     </div>
