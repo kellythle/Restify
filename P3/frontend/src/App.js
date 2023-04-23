@@ -21,44 +21,56 @@ import Logout from "./components/LogOut";
 const accessToken = localStorage.getItem("access");
 
 const App = () => {
-  return (
-    <Router>
-      <div>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/profile" element={<Profile token={accessToken} />} />
-          <Route path="/properties" element={<Properties />} />
-          <Route path="/hostsreservations" element={<HostsReservations />} />
-          <Route path="/guestsreservations" element={<GuestsReservations />} />
-          <Route
-            path="/requestreservation/:propID"
-            element={<ReservationRequest />}
-          />
-          <Route path="/search" element={<PropertySearch />} />
-          <Route
-            path="/properties/getproperty/:propID"
-            element={<PropertyDetail />}
-          />
-          <Route
-            path="properties/createproperty"
-            element={<CreateProperty />}
-          />
-          <Route
-            path="properties/editproperty/:propID"
-            element={<EditProperty />}
-          />
-          <Route path="properties/hostproperties" element={<HostProperty />} />
+    return (
+        <Router>
+            <div>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<PropertySearch />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/notifications" element={<Notifications />} />
+                    <Route
+                        path="/profile"
+                        element={<Profile token={accessToken} />}
+                    />
+                    <Route path="/properties" element={<Properties />} />
+                    <Route
+                        path="/hostsreservations"
+                        element={<HostsReservations />}
+                    />
+                    <Route
+                        path="/guestsreservations"
+                        element={<GuestsReservations />}
+                    />
+                    <Route
+                        path="/requestreservation/:propID"
+                        element={<ReservationRequest />}
+                    />
+                    <Route path="/search" element={<PropertySearch />} />
+                    <Route
+                        path="/properties/getproperty/:propID"
+                        element={<PropertyDetail />}
+                    />
+                    <Route
+                        path="properties/createproperty"
+                        element={<CreateProperty />}
+                    />
+                    <Route
+                        path="properties/editproperty/:propID"
+                        element={<EditProperty />}
+                    />
+                    <Route
+                        path="properties/hostproperties"
+                        element={<HostProperty />}
+                    />
 
-          {/* Add other routes as needed */}
-        </Routes>
-      </div>
-    </Router>
-  );
+                    {/* Add other routes as needed */}
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
 export default App;
