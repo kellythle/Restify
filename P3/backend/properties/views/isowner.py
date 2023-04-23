@@ -17,6 +17,7 @@ class IsOwner(APIView):
 
     def get(self, request, pk):
         property = get_object_or_404(Property, id=pk)
+        email = property.owner.email
         if property.owner != request.user:
-            return Response({"owner": "false"})
-        return Response({"owner": "true"})
+            return Response({"owner": "false", "email": email})
+        return Response({"owner": "true", "email": email})

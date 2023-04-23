@@ -16,6 +16,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
     
     useEffect(()=>{
         getProperty();
+        console.log(email)
     }, []);
 
 
@@ -56,7 +57,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
 
 
     async function getProperty(){
-        
+
         try {
             const response = await fetch(api);
             // console.log("API response: ", response);
@@ -69,7 +70,6 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
                 }
                 ))
             setImages(arr)
-            // console.log(arr)
           } catch (error) {
             console.error("Error fetching property:", error);
           }
@@ -86,10 +86,10 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         <div className="tile is-ancestor basetile box">
             <div className="tile is-parent">
             <div className="tile is-child">
-                <Carousel className='d-block w-100'>
+                <Carousel style={{width:"400px", height:"400px", margin:"auto"}}>
                     {images.map((image, index) => (
                         <Carousel.Item key={index}>
-                            <img className="d-block w-100" src={image.original} alt={`Slide ${index}`} />
+                            <img width="100%" height="100%" className="d-block w-100" src={image.original} alt={`Slide ${index}`} />
                         </Carousel.Item>
                     ))}
                 </Carousel>

@@ -27,6 +27,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
             if (data.owner == 'true'){
                 setIsGuest(false);
                 setOwnerEmail(data.email);
+                console.log(data)
             }
             else{
                 setIsGuest(true);

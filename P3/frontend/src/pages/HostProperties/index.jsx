@@ -124,7 +124,7 @@ const HostProperty = () => {
                 <div className="tile is-child box itembox">
                     <Link to="../properties/createproperty" className="tilelink">
                     <figure className="image is-4by3">
-                        <img src="add.png" />
+                        <img src="http://localhost:8000/media/add.png/" />
                     </figure>
                     <p>
                         <b>Add a New Property</b>
