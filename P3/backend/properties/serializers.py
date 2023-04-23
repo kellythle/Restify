@@ -127,5 +127,6 @@ class ReservationSerializer(ModelSerializer):
 
     class Meta:
         model = Reservation
-        fields = ['user', 'name', 'image', 'property', 'start_date',
-                  'end_date', 'message', 'status']
+        exclude = []
+        # fields = ['user', 'name', 'image', 'property', 'start_date',
+        #           'end_date', 'message', 'status']
