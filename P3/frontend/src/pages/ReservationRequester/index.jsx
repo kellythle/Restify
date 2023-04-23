@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 
 let token = localStorage.getItem("access");
 
@@ -11,6 +12,9 @@ function ReservationRequest() {
     const [daysPrice, setDaysPrice] = useState(null);
     const [tax, setTaxes] = useState(null);
     const [totalPrice, setTotalPrice] = useState(null);
+    const [message, setMessage] = useState("");
+    const [images, setImages] = useState([]);
+    const { propID } = useParams();
 
     useEffect(() => {
         if (startDate && endDate) {
@@ -27,18 +31,22 @@ function ReservationRequest() {
 
     useEffect(() => {
         fetchProperty();
-    }, []);
+    }, [property]);
 
     async function fetchProperty() {
         try {
             const response = await fetch(
-                "http://localhost:8000/properties/getproperty/11/"
+                "http://localhost:8000/properties/getproperty/" +
+                    propID.toString() +
+                    "/"
             );
-            console.log("API response: ", response);
             const data = await response.json();
-            console.log("Data received: ", data);
             setProperty(data);
             setPrice(data.price_night);
+            let arr = data.images.map((image) => ({
+                original: image,
+            }));
+            setImages(arr);
         } catch (error) {
             console.error("Error fetching property:", error);
         }
@@ -744,6 +752,9 @@ function ReservationRequest() {
                                             type="text"
                                             placeholder="Let the host know why you're travelling and when you'll check in"
                                             required
+                                            onChange={(event) =>
+                                                setMessage(event.target.value)
+                                            }
                                         ></textarea>
                                     </div>
                                 </div>
@@ -807,7 +818,8 @@ function ReservationRequest() {
                                                         },
                                                         method: "POST",
                                                         body: JSON.stringify({
-                                                            property: 11,
+                                                            property: propID,
+                                                            message: message,
                                                             start_date:
                                                                 startDate,
                                                             end_date: endDate,
@@ -839,7 +851,7 @@ function ReservationRequest() {
                                         >
                                             <figure className="image is-4by3">
                                                 <img
-                                                    src={property?.images[0]}
+                                                    src={images[0]?.original}
                                                     alt="House image"
                                                 />
                                             </figure>

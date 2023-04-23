@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import "./style.css";
 
 let token = localStorage.getItem("access");
@@ -7,6 +6,9 @@ let token = localStorage.getItem("access");
 const HostsReservations = () => {
     const [reservations, setReservations] = useState([]);
     const [status, setStatus] = useState({ status: "" });
+    const [next, setNext] = useState("");
+    const [previous, setPrevious] = useState("");
+    const [currPage, setCurrPage] = useState(1);
 
     useEffect(() => {
         fetchReservations();
@@ -23,17 +25,76 @@ const HostsReservations = () => {
             console.log("Data received: ", data);
             if (status.status === "") {
                 setReservations(data.results);
+                if (data.next !== null) {
+                    setNext(data.next);
+                }
             } else {
                 setReservations(
                     data.results.filter(
                         (reservations) => reservations.status === status.status
                     )
                 );
+                setNext("");
             }
         } catch (error) {
             console.error("Error fetching reservations:", error);
         }
     }
+
+    function nextHandler() {
+        fetch(next, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("access")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setReservations(data.results);
+                if (data.next !== null) {
+                    setNext(data.next);
+                } else {
+                    setNext("");
+                }
+                if (data.previous !== null) {
+                    setPrevious(data.previous);
+                } else {
+                    setNext("");
+                }
+                setCurrPage((prevPage) => {
+                    return prevPage + 1;
+                });
+            });
+    }
+
+    function previousHandler() {
+        fetch(previous, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("access")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setReservations(data.results);
+                if (data.next !== null) {
+                    setNext(data.next);
+                } else {
+                    setNext("");
+                }
+                if (data.previous !== null) {
+                    setPrevious(data.previous);
+                } else {
+                    setPrevious("");
+                }
+                setCurrPage((prevPage) => {
+                    return prevPage - 1;
+                });
+            });
+    }
+
     return (
         <>
             <section>
@@ -508,6 +569,34 @@ const HostsReservations = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="field is-grouped is-grouped-centered">
+                <p className="control">
+                    {previous ? (
+                        <button
+                            className="button is-primary is-outlined"
+                            onClick={previousHandler}
+                        >
+                            Previous
+                        </button>
+                    ) : (
+                        <></>
+                    )}
+                </p>
+                <p className="control">{currPage}</p>
+                <p className="control">
+                    {next ? (
+                        <button
+                            className="button is-primary is-outlined"
+                            onClick={nextHandler}
+                        >
+                            Next
+                        </button>
+                    ) : (
+                        <></>
+                    )}
+                </p>
+            </div>
         </>
     );
 };

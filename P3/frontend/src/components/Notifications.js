@@ -5,6 +5,9 @@ let token = localStorage.getItem("access");
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [isRead, setRead] = useState(Boolean);
+    const [next, setNext] = useState("");
+    const [previous, setPrevious] = useState("");
+    const [currPage, setCurrPage] = useState(1);
 
     useEffect(() => {
         fetchNotifications();
@@ -20,10 +23,68 @@ const Notifications = () => {
             const data = await response.json();
             console.log("Data received: ", data);
             setNotifications(data.results);
+            if (data.next !== null) {
+                setNext(data.next);
+            }
         } catch (error) {
             console.error("Error fetching reservations:", error);
         }
     }
+
+    function nextHandler() {
+        fetch(next, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("access")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setNotifications(data.results);
+                if (data.next !== null) {
+                    setNext(data.next);
+                } else {
+                    setNext("");
+                }
+                if (data.previous !== null) {
+                    setPrevious(data.previous);
+                } else {
+                    setNext("");
+                }
+                setCurrPage((prevPage) => {
+                    return prevPage + 1;
+                });
+            });
+    }
+
+    function previousHandler() {
+        fetch(previous, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("access")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setNotifications(data.results);
+                if (data.next !== null) {
+                    setNext(data.next);
+                } else {
+                    setNext("");
+                }
+                if (data.previous !== null) {
+                    setPrevious(data.previous);
+                } else {
+                    setPrevious("");
+                }
+                setCurrPage((prevPage) => {
+                    return prevPage - 1;
+                });
+            });
+    }
+
     return (
         <>
             <div className="columns">
@@ -39,8 +100,6 @@ const Notifications = () => {
                                 class="notification"
                                 style={{
                                     display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
                                 }}
                             >
                                 <button
@@ -62,37 +121,38 @@ const Notifications = () => {
                                     }}
                                 ></button>
                                 {notification.notification}
-                                {() => setRead(notification.is_read)}
-                                <button
-                                    className="button is-primary is-rounded"
-                                    onClick={() => {
-                                        fetch(
-                                            "http://localhost:8000/properties/usernotifications/update_read/" +
-                                                notification.id +
-                                                "/",
-                                            {
-                                                headers: {
-                                                    Authorization: `Bearer ${token}`,
-                                                    "Content-Type":
-                                                        "application/json",
-                                                },
-                                                method: "PUT",
-                                                body: JSON.stringify({
-                                                    is_read: true,
-                                                }),
-                                            }
-                                        );
-                                        setRead(true);
-                                    }}
-                                    style={{ marginLeft: "100vh" }}
-                                >
-                                    Read: {isRead.toString()}
-                                </button>
                             </div>
                         </p>
                     </div>
                 );
             })}
+            <div className="field is-grouped is-grouped-centered">
+                <p className="control">
+                    {previous ? (
+                        <button
+                            className="button is-primary is-outlined"
+                            onClick={previousHandler}
+                        >
+                            Previous
+                        </button>
+                    ) : (
+                        <></>
+                    )}
+                </p>
+                <p className="control">{currPage}</p>
+                <p className="control">
+                    {next ? (
+                        <button
+                            className="button is-primary is-outlined"
+                            onClick={nextHandler}
+                        >
+                            Next
+                        </button>
+                    ) : (
+                        <></>
+                    )}
+                </p>
+            </div>
         </>
     );
 };
