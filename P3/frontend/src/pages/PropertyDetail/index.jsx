@@ -9,47 +9,41 @@ const PropertyDetails = () => {
     const { propID } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [ownerEmail, setOwnerEmail] = useState("");
     const [isGuest, setIsGuest] = useState(true);
     const [property, setProperty] = useState({owner:"", property_name:"", address:"",group_size:"",
 number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], description:""});
     const [images, setImages] = useState([]);
-    let api = "http://localhost:8000/properties/isowner/" + propID.toString() + "/";
-    // useEffect(()=>{
-    //     checkIsOwner();
-    // }, []);
+    let api = "http://localhost:8000/properties/isOwner/" + propID.toString() + "/";
 
     async function checkIsOwner(){
-        if (isLoggedIn){
-            try {
-                const response = await fetch(api);
-                const data = await response.json();
-                if (data.owner == 'true'){
-                    setIsGuest(false);
+        try {
+            const response = await fetch(api, {
+                headers:{
+                    "Authorization": `Bearer ${localStorage.getItem('access')}`
                 }
-                else{
-                    setIsGuest(true)
-                }
-              } catch (error) {
-                console.error("Error fetching property:", error);
-              }
-        }
-        else {
-            console.log('no')
-            setIsGuest(true);
-        }
-        
+            });
+            const data = await response.json();
+            if (data.owner == 'true'){
+                setIsGuest(false);
+                setOwnerEmail(data.email);
+            }
+            else{
+                setIsGuest(true);
+                setOwnerEmail(data.email);
+            }
+        } catch (error) {
+            console.error("Error fetching property:", error);
+        }; 
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('access');
-        setIsLoggedIn(!!token);
         checkIsOwner();
-      }, [location]);
+      }, []);
 
 
     return <>
-        {isGuest?<Guest/>:<Host/>}
+        {isGuest?<Guest email={ownerEmail}/>:<Host email={ownerEmail}/>}
     </>
 }
 

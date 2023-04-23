@@ -35,7 +35,8 @@ class PropertySerializer(ModelSerializer):
 
     class Meta:
         model = Property
-        fields = ['owner',
+        fields = ['id',
+                  'owner',
                   "property_name",
                   'address',
                   'group_size',

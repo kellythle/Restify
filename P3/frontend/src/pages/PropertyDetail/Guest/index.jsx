@@ -4,7 +4,7 @@ import "../style.css";
 import ImageGallery from 'react-image-gallery';
 import Carousel from 'react-bootstrap/Carousel';
 
-const GuestPropertyDetails = () => {
+const GuestPropertyDetails = ({email}) => {
     const { propID } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
@@ -91,7 +91,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
                 <p style={{padding: "1rem", fontSize: "larger", marginTop:"5rem"}}>
                 {/* <b>{property.property_name}</b> <br /> */}
                 <b>${property.price_night}/night</b> <br />
-                <b>Contact:{property.owner}</b>
+                <b>Contact:{email}</b>
                 </p>
             </div>
             </div>

@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import "../style.css";
-import ImageGallery from 'react-image-gallery';
 import Carousel from 'react-bootstrap/Carousel';
 
-const HostPropertyDetails = () => {
+const HostPropertyDetails = ({email}) => {
     const { propID } = useParams();
     const location = useLocation();
+    const [deleting, setDelete] = useState(false);
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [property, setProperty] = useState({owner:"", property_name:"", address:"",group_size:"",
 number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], description:""});
     const [images, setImages] = useState([]);
     let api = "http://localhost:8000/properties/getproperty/" + propID.toString() + "/";
+    
     useEffect(()=>{
         getProperty();
-    }, [property]);
+    }, []);
+
+
 
     useEffect(() => {
         const token = localStorage.getItem('access');
@@ -33,16 +36,32 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         }
     }
 
+    function toggleDelete(){
+        let temp = !deleting;
+        setDelete(temp);
+        console.log(temp);
+    }
+
+    function deleteHandler(){
+        fetch(`http://localhost:8000/properties/deleteproperty/${propID}/`,{
+            method: "DELETE",
+            headers:{
+                "Authorization": `Bearer ${localStorage.getItem('access')}`
+            }
+        }).then(response => response.json()).then(data => {
+            navigate('../properties/hostproperties');
+            alert('Successfully deleted');
+            console.log(data)})
+    }
+
 
     async function getProperty(){
+        
         try {
             const response = await fetch(api);
             // console.log("API response: ", response);
       
             const data = await response.json();
-            // console.log("Data received: ", data);
-      
-            // Access the 'results' property of the data object
             setProperty(data);
             let arr = data.images.map((image)=>(
                 {
@@ -56,8 +75,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
           }
     }
     return <>
-    {/* {property ? console.log(property.amenities === undefined):console.log("no")} */}
-    {property ? <div className="columns">
+    {property ? <><div className="columns">
         <div
         className="column is-full"
         style={{display: "flex", flexDirection: "column", justifyContent: "centers"}}
@@ -82,7 +100,7 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
                 <p style={{padding: "1rem", fontSize: "larger", marginTop:"5rem"}}>
                 {/* <b>{property.property_name}</b> <br /> */}
                 <b>${property.price_night}/night</b> <br />
-                <b>Contact:{property.owner}</b>
+                <b>Contact:{email}</b>
                 </p>
             </div>
             </div>
@@ -94,11 +112,13 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
                 flexDirection: "column",
                 justifyContent: "center"}}
             >
-                <h1 style="text-align: center; font-size: large;">As the owner of this property, you can:</h1>
-                    <a class="button propertydetails is-link is-rounded" href="hostreservations.html">View Requests and History</a>
-                    <a class="button propertydetails is-link is-rounded" href="editproperty.html">Edit Property</a>
-                    <a class="button propertydetails is-link is-rounded" href="reservationdescription.html">View Property Comments</a>
-                <h1 style="text-align: center; font-size: large;">Status: Open for Requests</h1>
+                <h1 style={{textAlign: "center", fontSize: "large"}}>As the owner of this property, you can:</h1>
+                    <a className="button propertydetails is-link is-rounded" href="hostreservations.html">View Requests and History</a>
+                    <Link className="button propertydetails is-link is-rounded" to={`/properties/editproperty/${propID}`}>Edit Property</Link>
+                    <button className="js-modal-trigger button propertydetails is-link is-rounded" onClick={toggleDelete}>Delete Property</button>
+                    <a className="button propertydetails is-link is-rounded" href="reservationdescription.html">View Property Comments</a>
+
+                <h1 style={{textAlign: "center", fontSize: "large"}}>Status: Open for Requests</h1>
             </div>
             </div>
         </div>
@@ -137,6 +157,22 @@ number_of_beds:"", number_of_baths:"", price_night:"", amenities:[], images:[], 
         </div>
         </div>
     </div>
+    <div className={`modal ${deleting ?  "is-active" : ""}`}>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+            <header className="modal-card-head">
+                <p className="modal-card-title">Delete Property</p>
+                <button className="delete" aria-label="close" onClick={toggleDelete}></button>
+            </header>
+            <section className="modal-card-body">
+                Are you sure you want to delete this property?
+            </section>
+            <footer className="modal-card-foot">
+                <button className="button is-danger" onClick={deleteHandler}>Delete</button>
+            </footer>
+        </div>
+     </div>
+    </>           
     :<></>}
         
         

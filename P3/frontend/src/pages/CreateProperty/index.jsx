@@ -7,7 +7,18 @@ const CreateProperty = () => {
     const navigate = useNavigate();
     const [isHost, setIsHost] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const amenityDict = {
+      "Laundry": 1,
+      "Wifi": 2,
+      "Kitchen": 3,
+      "Dryer": 4,
+      "Pool": 5,
+      "Free parking on premises": 6,
+  };
+    const allAmenitiesLeft = ["Wifi", "Laundry", "Pool"]
+    const allAmenitiesRight = ["Kitchen", "Dryer", "Free parking on premises"]
     const [formData, setFormData] = useState({
+        owner: "1",
         property_name: "",
         address: "",
         group_size: '',
@@ -21,26 +32,17 @@ const CreateProperty = () => {
     })
 
     useEffect(() => {
-        const token = localStorage.getItem('access');
-        setIsLoggedIn(!!token);
-        console.log(token)
+      checkIsHost();
       }, []);
 
-    useEffect(() => {
-        checkIsHost();
-        console.log(isLoggedIn)
-      }, [isLoggedIn]);
+    // useEffect(() => {
+    //     checkIsHost();
+    //     console.log(isLoggedIn)
+    //   }, [isLoggedIn]);
 
     async function checkIsHost(){
-        if (isLoggedIn){
+        if (!!localStorage.getItem('access')){
             await fetchUserData();
-
-            console.log('here1111')
-            if (!isHost){
-                console.log('here1')
-                navigate('/')
-                throw new Error('Must be host');
-            }
         }
         else{
             navigate('/login');
@@ -62,6 +64,10 @@ const CreateProperty = () => {
           }
       
           const data = await response.json();
+          if (data.isHost == 'false'){
+            navigate('/')
+            throw new Error('Must be host');
+          }
           setIsHost(data.isHost);
       
         } catch (error) {
@@ -79,18 +85,18 @@ const CreateProperty = () => {
         }));
     };
 
-    const handleAmenityChange = (e) => {
-        var updatedAmenities = [...formData.amenities];
-        if (e.target.checked) {
-            updatedAmenities = [...formData.amenities, e.target.value];
-        } else {
-            updatedAmenities.splice(formData.amenities.indexOf(e.target.value), 1);
-        }
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          amenities: [...prevFormData.updatedAmenities],
-        }));
-      };
+    const handleAmenityChange = (item, checked) => {
+      var updatedAmenities = [...formData.amenities];
+      if (checked) {
+          updatedAmenities = [...formData.amenities, item.item];
+      } else {
+          updatedAmenities.splice(formData.amenities.indexOf(item.item), 1);
+      }
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        amenities: updatedAmenities,
+      }));
+    };
 
       const handleImageChange = (e) => {
         setFormData((prevFormData) => ({
@@ -101,19 +107,30 @@ const CreateProperty = () => {
 
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        let tempData = {...formData};
         const data = new FormData();
-        for (const key in formData) {
-          if (formData.hasOwnProperty(key) && formData[key]) {
+        for (const key in tempData) {
+          if (tempData.hasOwnProperty(key) && tempData[key]) {
+            if (key == 'amenities'){
+              let obj = [];
+              for (let propName of tempData['amenities']){
+                obj.push(amenityDict[propName]);
+              };
+              data.append(key, obj);
+            }else if (key == 'date_created'){
+              const date = new Date().toJSON();
+              data.append(key, date);
+            }
+            else{
             data.append(key, formData[key]);
+            };
           }
         }
-    
         try {
           const response = await fetch("http://127.0.0.1:8000/properties/addproperty/", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('access')}`,
               },
             body: data,
@@ -124,7 +141,7 @@ const CreateProperty = () => {
     
           if (response.ok) {
             alert("Property created successfully!");
-            navigate("/properties/");
+            navigate("/properties/hostproperties");
           } else {
             const errorData = await response.json();
             alert(JSON.stringify(errorData));
@@ -177,7 +194,7 @@ const CreateProperty = () => {
                         <div className="control">
                           <div className="select">
                             <select onChange={handleChange} name="group_size">
-                              <option>Choose a number of guests</option>
+                              <option selected disabled hidden>Choose a number of guests</option>
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
@@ -211,7 +228,7 @@ const CreateProperty = () => {
                               <label className="label has-text-weight-semibold">Number of Beds</label>
                               <div className="select">
                                 <select onChange={handleChange} name="number_of_beds">
-                                  <option>Choose a number of beds</option>
+                                  <option selected disabled hidden>Choose a number of beds</option>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -240,7 +257,7 @@ const CreateProperty = () => {
                               <label className="label has-text-weight-semibold">Number of Baths</label>
                               <div className="select">
                                 <select onChange={handleChange} name="number_of_baths">
-                                  <option>Choose a number of baths</option>
+                                  <option selected disabled hidden>Choose a number of baths</option>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -270,21 +287,44 @@ const CreateProperty = () => {
 
                       <div className="field pt-4">
                         <label className="label">Amenities</label>
-                        <label className="label has-text-weight-semibold">Essentials</label>
                         <div className="control">
                           <div className="columns is-variable is-1">
                             <div className="column is-one-half">
-                              <label className="checkbox">
+                              {allAmenitiesLeft.map((item, index)=>{
+                                  return <div key={index}>
+                                            <label className="checkbox">
+                                                <input onChange={(e)=>{
+                                                    handleAmenityChange({item}, e.target.checked)}} type="checkbox"/>
+                                                    {item}
+                                            </label><br/>
+                                          </div>
+                                
+                              })}
+                              {/* <label className="checkbox">
                                 <input onChange={handleAmenityChange} type="checkbox"/>
                                 Wifi
                               </label><br/>
                               <label className="checkbox">
                                 <input onChange={handleAmenityChange} type="checkbox"/>
-                                Washer
+                                Laundry
                               </label><br/>
+                              <label className="checkbox">
+                                <input onChange={handleAmenityChange} type="checkbox"/>
+                                Pool
+                              </label><br/> */}
                             </div>
                             <div className="column auto">
-                              <label className="checkbox">
+                                {allAmenitiesRight.map((item, index)=>{
+                                      return <div key={index}>
+                                        <label className="checkbox">
+                                            <input onChange={(e)=>{
+                                            handleAmenityChange({item}, e.target.checked)}} type="checkbox"/>
+                                                {item}
+                                        </label><br/>
+                                      </div>
+                                    
+                                })}
+                              {/* <label className="checkbox">
                                 <input onChange={handleAmenityChange} type="checkbox"/>
                                 Kitchen
                               </label><br/>
@@ -292,22 +332,10 @@ const CreateProperty = () => {
                                 <input onChange={handleAmenityChange} type="checkbox"/>
                                 Dryer
                               </label><br/>
-                            </div>
-                          </div>    
-                        </div>
-
-                        <label className="label has-text-weight-semibold pt-3">Features</label>
-                        <div className="control">
-                          <div className="columns is-variable is-1">
-                            <div className="column is-one-half">
-                              <label className="checkbox">
-                                <input onChange={handleAmenityChange} type="checkbox"/>
-                                Pool
-                              </label><br/>
                               <label className="checkbox">
                                 <input onChange={handleAmenityChange} type="checkbox"/>
                                 Free parking on premises
-                              </label><br/>
+                              </label><br/> */}
                             </div>
                           </div>    
                         </div>
@@ -371,10 +399,10 @@ const CreateProperty = () => {
 
                       <div className="field is-grouped">
                         <div className="control">
-                          <a href="myproperties.html" className="button is-link">Submit</a>
+                          <button className="button is-link">Submit</button>
                         </div>
                         <div className="control">
-                          <a className="button is-link is-light" href="myproperties.html">Cancel</a>
+                          <Link className="button is-link is-light" to={`../properties/hostproperties`}>Cancel</Link>
                         </div>
                       </div>
                     </div>
